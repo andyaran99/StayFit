@@ -37,13 +37,10 @@ public class NewsMessageRepository:IRepoitory<NewsMessage>
         await _context.SaveChangesAsync();
     }
 
-    public async Task<NewsMessage> Update(NewsMessage item)
+    public async Task<NewsMessage> Update(NewsMessage updatedNewsMessage)
     {
-        NewsMessage newsMessage = await _context.NewsMessages.SingleAsync(newsMessage => newsMessage.Id == item.Id);
-        newsMessage.Title = item.Title;
-        newsMessage.Description = item.Description;
-        
+        _context.NewsMessages.Update(updatedNewsMessage);
         await _context.SaveChangesAsync();
-        return newsMessage;
+        return updatedNewsMessage;
     }
 }

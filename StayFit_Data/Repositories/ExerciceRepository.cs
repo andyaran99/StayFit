@@ -39,13 +39,11 @@ public class ExerciceRepository:IRepoitory<Exercice>
 
     public async Task<Exercice> Update(Exercice updatedExercice)
     {
-        Exercice exercice = await _context.Exercices.SingleAsync(exercice => exercice.Id == updatedExercice.Id);
-        exercice.Name = updatedExercice.Name;
-        exercice.Description = updatedExercice.Description;
-        exercice.DateTime = updatedExercice.DateTime;
-        
-        
+        _context.Exercices.Update(updatedExercice);
         await _context.SaveChangesAsync();
-        return exercice;
+        return updatedExercice;
+        
+        
+        
     }
 }

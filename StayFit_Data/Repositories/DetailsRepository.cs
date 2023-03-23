@@ -39,13 +39,11 @@ public class DetailsRepository:IRepoitory<Details>
 
     public async Task<Details> Update(Details updatedDetails)
     {
-        Details details = await _context.Details.SingleAsync(details => details.Id == updatedDetails.Id);
-        details.BodyType = updatedDetails.BodyType;
-        details.RoutineType = updatedDetails.RoutineType;
-        details.DateTime = updatedDetails.DateTime;
-        
+        _context.Details.Update(updatedDetails);
         await _context.SaveChangesAsync();
-        return details;
+        return updatedDetails;
+        
+        
     }
     
 }
