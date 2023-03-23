@@ -46,7 +46,7 @@ public static class DetailsExtension
         };
     }
     
-    public static List<DetailsViewDto> ToListProductViewDto(this List<Details> productEntities)
+    public static List<DetailsViewDto> ToListDetailsViewDtos(this List<Details> productEntities)
     {
         List<DetailsViewDto> result = new List<DetailsViewDto>();
         foreach (var productEntity in productEntities)
