@@ -45,4 +45,14 @@ public static class DetailsExtension
             DateTime = detailsEntity.DateTime,
         };
     }
+    
+    public static List<DetailsViewDto> ToListProductViewDto(this List<Details> productEntities)
+    {
+        List<DetailsViewDto> result = new List<DetailsViewDto>();
+        foreach (var productEntity in productEntities)
+        {
+            result.Add(ToDetailsViewDto(productEntity));
+        }
+        return result;
+    }
 }

@@ -13,7 +13,11 @@ public class DetailsService
     {
         _detailsRepository = detailsRepository;
     }
-    
+    public async Task<List<DetailsViewDto>> ListProducts()
+    {
+        var products = await _detailsRepository.GetAll();
+        return products.ToListProductViewDto();
+    }
     public async Task<Details> NewDetails(DetailsCreateDto newDetails)
     {
         var detailEntity = newDetails.ToDetailsEntity();
