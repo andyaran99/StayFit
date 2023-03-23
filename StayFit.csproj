@@ -18,8 +18,4 @@
       <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="8.0.0-preview.2.23128.3-01" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="StayFit_Data\Services" />
-    </ItemGroup>
-
 </Project>
