@@ -4,7 +4,7 @@ using StayFit.StayFit_Data.Entity;
 namespace StayFit.StayFit_Data.Repositories.Repositories;
 
 
-public class UserRepository:IRepoitory<User>
+public class UserRepository:IRepository<User>
 {
     private readonly Context _context;
 

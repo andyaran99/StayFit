@@ -1,6 +1,6 @@
 ﻿namespace StayFit.StayFit_Data.Repositories;
 
-public interface IRepoitory<T>
+public interface IRepository<T>
 {
     Task<List<T>> GetAll();
     Task<T> Get(int id);

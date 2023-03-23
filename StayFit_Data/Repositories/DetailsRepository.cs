@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace StayFit.StayFit_Data.Repositories;
 
-public class DetailsRepository:IRepoitory<Details>
+public class DetailsRepository:IRepository<Details>
 {
     private readonly Context _context;
 
