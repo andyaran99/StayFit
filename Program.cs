@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using StayFit.StayFit_Data;
 using StayFit.StayFit_Data.Repositories;
 using StayFit.StayFit_Data.Entity;
+using StayFit.StayFit_Data.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
@@ -45,11 +46,23 @@ namespace StayFit
     builder.Services.AddDbContext<Context>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
+    
+    
+    builder.Services.AddTransient<IRepository<Product>, ProductRepository>();
+   
+    
+    
+    
+    
+    builder.Services.AddTransient<ProductService>();
+    builder.Services.AddTransient<ProductService>();
+    
+    builder.Services.AddTransient<DataSeeder>();
     /*
     // Add data repository services
     builder.Services.AddTransient<IUserRepository, UserRepository>();
     builder.Services.AddTransient<IRepository<Order>, OrderRepository>();
-    builder.Services.AddTransient<IRepository<Product>, ProductRepository>();
+    
     builder.Services.AddTransient<IRepository<Customer>, CustomerRepository>();
     builder.Services.AddTransient<IRepository<Partner>, PartnerRepository>();
     builder.Services.AddTransient<IRepository<Device>, DeviceRepository>();
@@ -74,7 +87,7 @@ namespace StayFit
 
     // Add data logic services
     builder.Services.AddTransient<UserService>();
-    builder.Services.AddTransient<ProductService>();
+    
     builder.Services.AddTransient<IOrderService, OrderService>();
     builder.Services.AddTransient<IPartnersService, PartnersService>();
     builder.Services.AddTransient<CustomerService>();
@@ -88,14 +101,18 @@ namespace StayFit
 
     var app = builder.Build();
 
+    
+    */
+
+    // Configure the HTTP request pipeline.
+    
+    
+    
+    var app = builder.Build();
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;
     var initialiser = services.GetRequiredService<DataSeeder>();
     initialiser.Seed();
-    */
-
-    // Configure the HTTP request pipeline.
-    var app = builder.Build();
     if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();

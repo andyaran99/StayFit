@@ -19,14 +19,14 @@ public class ProductService
         var products = await _productRepository.GetAll();
         return products.ToListProductViewDto();
     }
-    public async Task<Product> NewDetails(ProductCreateDto newDetails)
+    public async Task<Product> NewProduct(ProductCreateDto newDetails)
     {
         var detailEntity = newDetails.ToProductEntity();
         await _productRepository.Add(detailEntity);
         return detailEntity;
     }
 
-    public async Task DeleteDetail(int detailId)
+    public async Task DeleteProduct(int detailId)
     {
         await _productRepository.Delete(detailId);
     }

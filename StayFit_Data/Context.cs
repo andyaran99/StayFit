@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Z.EntityFramework.Plus;
 
 
-namespace StayFit.StayFit_Data.Repositories;
+namespace StayFit.StayFit_Data;
 
 public class Context:DbContext
 {
@@ -24,7 +24,7 @@ public class Context:DbContext
     
     
     
-    public DbSet<Details> Details { get; set; }
+    
     public DbSet<Exercice> Exercices { get; set; }
     public DbSet<NewsMessage> NewsMessages { get; set; }
     public DbSet<Payment>Payments { get; set; }
@@ -38,7 +38,7 @@ public class Context:DbContext
     {
         base.OnModelCreating(modelBuilder);
         
-        modelBuilder.Entity<Details>().ToTable("Details");
+        
         modelBuilder.Entity<Exercice>().ToTable("Exercice");
         modelBuilder.Entity<NewsMessage>().ToTable("NewsMessage");
         modelBuilder.Entity<Payment>().ToTable("Payment");

@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StayFit.StayFit_Data.Repositories;
+using StayFit.StayFit_Data;
 
 #nullable disable
 
 namespace StayFit.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230322104728_try1")]
-    partial class try1
+    [Migration("20230323114622_try2")]
+    partial class try2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
