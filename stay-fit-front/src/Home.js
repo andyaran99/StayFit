@@ -8,18 +8,20 @@ import {useEffect, useState} from 'react';
 
 
 function App() {
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState(null);
   useEffect(() => {
     async function getData() {
-      const products  = await fetch('https://localhost:44368/api/Product')
-          .then(products => { return products.json() })
+      const response  = await fetch('https://localhost:44368/api/Product')
+          .then(response => { return response.json() })
           .catch(error => { console.log(error) });
-      setProducts(products);
+      
+      setProducts(response);
+      
     }
     getData();
   }, []);
-  
   console.log(products);
+  
 
 
   return (
