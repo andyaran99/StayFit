@@ -1,16 +1,7 @@
 ﻿import React, {useEffect, useState} from 'react';
 
 
-
-
-
-
-
-const Product = () => {
-    return <h1>Product</h1>;
-};
-
-/*function Product() {
+function Product() {
     const [products, setProducts] = useState(null);
     useEffect(() => {
         async function getData() {
@@ -19,7 +10,7 @@ const Product = () => {
                 .catch(error => { console.log(error) });
 
             setProducts(response);
-
+            console.log(response);
         }
         getData();
     }, []);
@@ -40,7 +31,7 @@ const Product = () => {
                 </thead>
                 <tbody>
 
-                {/!*{ products.map(products =>
+                { products.map(products =>
                     <tr key={products.id}>
                         <td>{products.id} </td>
                         <td>{products.title} </td>
@@ -49,11 +40,11 @@ const Product = () => {
                         <td><button>To Checkout Page</button></td>
                     </tr>
 
-                )}*!/}
+                )}
                 </tbody>
             </table>
         </div>
     );
-}*/
+}
 
 export default Product;

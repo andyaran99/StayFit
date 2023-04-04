@@ -9,9 +9,9 @@ export default function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" component={<Layout />}>
+                <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    <Route path="/product" element={<Product />} />
+                    <Route path="api/Product" element={<Product />} />
                 </Route>
             </Routes>
         </BrowserRouter>
