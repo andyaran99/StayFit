@@ -16,11 +16,14 @@ const Layout = () => {
                 
                 <div className="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-item active">
+                        <li className="nav-item">
                             <Link class="nav-link" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
                             <Link class="nav-link" to="Product">Product</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link class="nav-link" to="NewsMessage">News</Link>
                         </li>
                     </ul>
                 </div>
