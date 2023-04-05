@@ -14,24 +14,31 @@ public class DataSeeder
     public void Seed()
     {
         _context.Database.EnsureCreated();
-
-         var products = new Product[]
+        if (_context.Payments.Any())
+        {
+            return;
+        }
+        var products = new Product[]
             {
                 new()
                 {
-                    Title = "Smart Air",
-                    Description = "Unlike conventional air conditioners, our Smart ACs allow you to maintain your home temperature using a smartphone.",
+                    Name = "Basic package",
+                    Description = "Access to the gym",
+                    Price = 20
+                    
                     
                 },
                 new()
                 {
-                    Title= "Smart Fridge",
-                    Description = "Our smart fridge is more than a fridge. Keep your family organized, prep meals, entertain in the kitchen, control your smart devices, and more."
+                    Name= "Dynamic package",
+                    Description = "Access to the gym and to aerobic classes ",
+                    Price = 30
                 },
                 new()
                 {
-                    Title = "Smart Oven",
-                    Description = "Our Smart Oven offers incredible versatility and precision, giving you greater control of your toasting, roasting, air frying and more."
+                    Name = "Complete Package",
+                    Description = "Access to gym, aerobic classes,spa and sawna",
+                    Price = 40
                 }
             };
 

@@ -29,7 +29,7 @@ function Product() {
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Title</th>
+                    <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
                 </tr>
@@ -39,7 +39,7 @@ function Product() {
                 { products.map(product =>
                     <tr key={product.id}>
                         <td>{product.id} </td>
-                        <td>{product.title} </td>
+                        <td>{product.name} </td>
                         <td>{product.description}</td>
                         <td>{product.price}</td>
                         <td><button>To Checkout Page</button></td>

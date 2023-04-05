@@ -45,6 +45,7 @@ public class Context:DbContext
         modelBuilder.Entity<Product>().ToTable("Product");
         modelBuilder.Entity<Routine>().ToTable("Routine");
         modelBuilder.Entity<User>().ToTable("User");
+        
 
     }
     public override int SaveChanges()

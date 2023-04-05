@@ -6,7 +6,7 @@ namespace StayFit.StayFit_Data.Model.ProductDto;
 public class ProductCreateDto
 {
     [Required(ErrorMessage = "Body type  is required")]
-    public string Title{ get; set; }
+    public string Name{ get; set; }
     [Required(ErrorMessage = "Body type  is required")]
     public string Description{ get; set; }
     [Required(ErrorMessage = "Body type  is required")]

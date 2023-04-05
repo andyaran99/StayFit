@@ -16,7 +16,7 @@ public static class ProductExtension
         {
             Id = productView.Id,
             Description = productView.Description,
-            Title = productView.Title,
+            Name = productView.Name,
             Price = productView.Price
             
         };
@@ -27,7 +27,7 @@ public static class ProductExtension
         return new Product
         {
             Description = productView.Description,
-            Title = productView.Title,
+            Name = productView.Name,
             Price = productView.Price
 
         };
@@ -39,7 +39,7 @@ public static class ProductExtension
         {
             Id = productEntity.Id,
             Description = productEntity.Description,
-            Title = productEntity.Title,
+            Name = productEntity.Name,
             Price = productEntity.Price
         };
     }
