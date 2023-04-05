@@ -24,8 +24,6 @@ public static class NewsMessageExtension
         {
             Description = newsMessageView.Description,
             Title = newsMessageView.Title,
-            
-
         };
     }
 

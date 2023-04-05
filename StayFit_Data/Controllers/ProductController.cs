@@ -1,10 +1,6 @@
-﻿using StayFit.StayFit_Data.Extension;
-using StayFit.StayFit_Data.Model.ProductDto;
-using StayFit.StayFit_Data.Entity;
-using StayFit.StayFit_Data.Repositories;
+﻿using StayFit.StayFit_Data.Model.ProductDto;
 using StayFit.StayFit_Data.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 
 namespace StayFit.StayFit_Data.Controllers;
 

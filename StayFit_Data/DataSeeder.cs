@@ -14,10 +14,19 @@ public class DataSeeder
     public void Seed()
     {
         _context.Database.EnsureCreated();
+        
         if (_context.Products.Any())
         {
             return;
         }
+        
+        if (_context.NewsMessages.Any())
+        {
+            return;
+        }
+        
+        
+        
         var products = new Product[]
             {
                 new()
@@ -41,7 +50,31 @@ public class DataSeeder
                     Price = 40
                 }
             };
-
+        
+        var newMessage = new NewsMessage[]
+        {
+            new()
+            {
+                Title = "Aerobic Hour",
+                Description = "the aerobic class will be held at the second floor at 14:00",
+                
+                    
+                    
+            },
+            new()
+            {
+                Title= "Special fitness hour",
+                Description = "We are planning to hold a special fitness class for the sport day. The intrested menbers can " +
+                              "come to the jim at 16:00 at third floor ",
+            },
+            new()
+            {
+                Title = "Changes to gym",
+                Description = "Whe are happy to announce that we added some new equippenemt for our members",
+                
+            }
+        };
+            _context.NewsMessages.AddRange(newMessage);
             _context.Products.AddRange(products);
             _context.SaveChanges();
             

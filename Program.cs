@@ -49,19 +49,21 @@ namespace StayFit
     
     
     builder.Services.AddTransient<IRepository<Product>, ProductRepository>();
+    builder.Services.AddTransient<IRepository<NewsMessage>, NewsMessageRepository>();
    
     
     
     
     
     builder.Services.AddTransient<ProductService>();
-    builder.Services.AddTransient<ProductService>();
+    builder.Services.AddTransient<NewsMessageService>();
+    
     
     builder.Services.AddTransient<DataSeeder>();
     /*
     // Add data repository services
     builder.Services.AddTransient<IUserRepository, UserRepository>();
-    builder.Services.AddTransient<IRepository<Order>, OrderRepository>();
+    
     
     builder.Services.AddTransient<IRepository<Customer>, CustomerRepository>();
     builder.Services.AddTransient<IRepository<Partner>, PartnerRepository>();
