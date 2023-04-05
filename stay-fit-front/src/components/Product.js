@@ -13,10 +13,14 @@ function Product() {
         ).then((response) => response.json());
 
         setProduct(response);
+        console.log(response);
+        
     };
 
     useEffect(() => {
         getApiData();
+        console.log(products);
+        
     }, []);
 
     return (
