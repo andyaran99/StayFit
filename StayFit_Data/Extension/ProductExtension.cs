@@ -1,9 +1,4 @@
 ﻿using StayFit.StayFit_Data.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StayFit.StayFit_Data.Model.ProductDto;
 
 namespace StayFit.StayFit_Data.Extension;
