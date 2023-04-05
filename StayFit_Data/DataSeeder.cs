@@ -14,7 +14,7 @@ public class DataSeeder
     public void Seed()
     {
         _context.Database.EnsureCreated();
-        if (_context.Payments.Any())
+        if (_context.Products.Any())
         {
             return;
         }

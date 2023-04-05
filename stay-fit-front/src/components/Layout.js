@@ -1,13 +1,21 @@
 ﻿import { Outlet, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
+import './Layout.css';
+
 
 const Layout = () => {
     return (
         <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
+                <button className="navbar-toggler " type="button" data-toggle="collapse"
+                        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
                 <Link class="navbar-brand" to="/">StayFit</Link>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
+                
+                <div className="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
+                    <ul className="navbar-nav ml-auto">
                         <li className="nav-item active">
                             <Link class="nav-link" to="/">Home</Link>
                         </li>
@@ -16,7 +24,6 @@ const Layout = () => {
                         </li>
                     </ul>
                 </div>
-                
             </nav>
 
             <Outlet />
