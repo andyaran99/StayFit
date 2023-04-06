@@ -39,6 +39,18 @@ public class Context:DbContext
         base.OnModelCreating(modelBuilder);
         
         
+        modelBuilder.Entity<Routine>()
+            .HasMany(e => e.ExercicesList)
+            .WithMany(e => e.RoutineList)
+            .UsingEntity<ExerciceRoutine>();
+        
+        modelBuilder.Entity<Routine>()
+            .HasMany(e => e.UserList)
+            .WithMany(e => e.RoutineList)
+            .UsingEntity<RoutineUser>();
+        
+    
+        
         modelBuilder.Entity<Exercice>().ToTable("Exercice");
         modelBuilder.Entity<NewsMessage>().ToTable("NewsMessage");
         modelBuilder.Entity<Payment>().ToTable("Payment");
