@@ -1,6 +1,5 @@
 ﻿using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Model.ProductDto;
-
 namespace StayFit.StayFit_Data.Extension;
 
 public static class ProductExtension
