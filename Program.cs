@@ -50,6 +50,8 @@ namespace StayFit
     
     builder.Services.AddTransient<IRepository<Product>, ProductRepository>();
     builder.Services.AddTransient<IRepository<NewsMessage>, NewsMessageRepository>();
+    builder.Services.AddTransient<IRepository<Exercice>, ExerciceRepository>();
+    builder.Services.AddTransient<IRepository<Routine>, RoutineRepository>();
    
     
     
@@ -57,6 +59,8 @@ namespace StayFit
     
     builder.Services.AddTransient<ProductService>();
     builder.Services.AddTransient<NewsMessageService>();
+    builder.Services.AddTransient<Exercice>();
+    builder.Services.AddTransient<Routine>();
     
     
     builder.Services.AddTransient<DataSeeder>();

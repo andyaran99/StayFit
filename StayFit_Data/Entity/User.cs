@@ -16,7 +16,7 @@ public class User:ISoftDelete
    
    public List<User> TrainerList { get; set; }
    public List<User> MemberList { get; set; }
-   public List<Routine> RoutineList { get; set; }
+   public List<RoutineUser> RoutineList { get; set; }
 
    public bool IsDeleted { get; set; }
 }

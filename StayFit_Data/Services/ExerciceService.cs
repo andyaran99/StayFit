@@ -36,4 +36,5 @@ public class ExerciceService
         var exercice = await _exerciceRepository.Get(exerciceId);
         return exercice.ToExerciceViewDto();
     }
+    
 }

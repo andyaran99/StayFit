@@ -35,6 +35,7 @@ public class ExerciceController:ControllerBase
         }
     }
     
+    
     [HttpPost]
     public async Task<ActionResult<ExerciceViewDto>> CreateExercice(ExerciceCreateDto newExercice)
     {

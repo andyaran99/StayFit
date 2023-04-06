@@ -18,6 +18,13 @@ public class ExerciceRepository:IRepository<Exercice>
             .AsNoTracking()
             .ToListAsync();
     }
+    
+    public async Task<List<Exercice>> GetAll(int RouteId)
+    {
+        return await _context.Exercices
+            .AsNoTracking()
+            .ToListAsync();
+    }
 
     public async Task<Exercice> Get(int id)
     {
