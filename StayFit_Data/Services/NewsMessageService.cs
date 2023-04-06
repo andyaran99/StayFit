@@ -2,6 +2,7 @@
 using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Model.NewsMessageDTO;
 using StayFit.StayFit_Data.Extension;
+
 namespace StayFit.StayFit_Data.Services;
 public class NewsMessageService
 {
