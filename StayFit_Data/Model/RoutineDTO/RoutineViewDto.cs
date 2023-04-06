@@ -1,6 +1,11 @@
-﻿namespace StayFit.StayFit_Data.Model.RoutineDTO;
+﻿using StayFit.StayFit_Data.Entity;
+
+namespace StayFit.StayFit_Data.Model.RoutineDTO;
 
 public class RoutineViewDto
 {
-    
+    public int Id { get; set; }
+    public BodyType BodyType { get; set; }
+    public RoutineType RoutineType{ get; set; }
+    public DateTime DateTime{ get; set; }
 }
