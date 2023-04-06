@@ -1,5 +1,6 @@
 ﻿import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import "./NewsMessage.css";
 
 function NewsMessage() {
     const [newsMessage, setNewsMessage] = useState([]);
@@ -23,7 +24,28 @@ function NewsMessage() {
 
     return (
         <div className="newsMessage">
-            <div className="col-lg-3 col-lg-3 p-2 d-inline-flex product-container">
+            {newsMessage.map(message=>
+                <div class='newsMessageTable'>
+                    <table class='table-dark'>
+                        <thead>
+                        <tr>
+                            <th scope="col">
+                                {message.title}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                {message.description}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+            )}
+           {/* <div className="col-lg-3 col-lg-3 p-2 d-inline-flex product-container">
 
                 {newsMessage.map(message=>
                     <div className="card" key={message.id}>
@@ -32,7 +54,7 @@ function NewsMessage() {
                             <p className="card-text list-description">{message.description}</p>
                         </div>
                     </div>)}
-            </div>
+            </div>*/}
 
         </div>
     );

@@ -31,12 +31,12 @@ function Product() {
             {products.map(product=>
                 <div className="card" key={product.id}>
                     <div className="card-body">
-                        <h4 className="title card-title text-center">{product.name}</h4>
+                        <h2 className="title card-title text-center">{product.name}</h2>
                         <p className="card-text list-description">{product.description}</p>
                         <div className="d-flex flex-row justify-content-between">
-                            <p className="card-text text-center"><strong>Price: {product.price} Eur</strong></p>
-                            <a type="button" className="btn btn-primary">Buy Now</a>
+                            <h3 className="card-text text-center"><strong>Price: {product.price} Eur</strong></h3>
                         </div>
+                        <a type="button" className="btn btn-primary btn-checkout" id="btn-checkout">Buy Now</a>
                     </div>
                 </div>)}
             </div>
