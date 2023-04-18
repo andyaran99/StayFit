@@ -9,8 +9,9 @@ public class Routine:ISoftDelete
     
     
     
-    public List<RoutineUser> UserList { get; set; }
-    public List<ExerciceRoutine> ExercicesList { get; set; }
+    public List<User> Users { get; set; }
+    
+    public List<Exercice> Exercices { get; set; }
     
     public bool IsDeleted { get; set; }
 }

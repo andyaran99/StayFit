@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StayFit.StayFit_Data.Entity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
 using Z.EntityFramework.Plus;
 
 
@@ -38,45 +36,15 @@ public class Context:DbContext
     {
         base.OnModelCreating(modelBuilder);
         
-    
-        modelBuilder.Entity<RoutineUser>()
-            .HasKey(ru => new { ru.RoutineId, ru.UserId });
-        
-        modelBuilder.Entity<RoutineUser>()
-            .HasOne(ru => ru.Routine)
-            .WithMany(r => r.UserList)
-            .HasForeignKey(bc => bc.RoutineId);  
-        
-        modelBuilder.Entity<RoutineUser>()
-            .HasOne(ru => ru.User)
-            .WithMany(u => u.RoutineList)
-            .HasForeignKey(ru => ru.UserId);
-        
-        
-        modelBuilder.Entity<ExerciceRoutine>()
-            .HasKey(ru => new { ru.RoutineId, ru.ExcerciceId });
-        
-        modelBuilder.Entity<ExerciceRoutine>()
-            .HasOne(ru => ru.Routine)
-            .WithMany(r => r.ExercicesList)
-            .HasForeignKey(bc => bc.RoutineId);  
-        
-        modelBuilder.Entity<ExerciceRoutine>()
-            .HasOne(ru => ru.Exercice)
-            .WithMany(u => u.RoutineList)
-            .HasForeignKey(ru => ru.ExcerciceId);
-    
-        
-        
-        /*modelBuilder.Entity<Routine>()
-            .HasMany(e => e.ExercicesList)
-            .WithMany(e => e.RoutineList)
+        modelBuilder.Entity<Routine>()
+            .HasMany(e => e.Exercices)
+            .WithMany(e => e.Routines)
             .UsingEntity<ExerciceRoutine>();
         
         modelBuilder.Entity<Routine>()
-            .HasMany(e => e.UserList)
-            .WithMany(e => e.RoutineList)
-            .UsingEntity<RoutineUser>();*/
+            .HasMany(e => e.Users)
+            .WithMany(e => e.Routines)
+            .UsingEntity<RoutineUser>();
         
     
         
@@ -86,11 +54,9 @@ public class Context:DbContext
         modelBuilder.Entity<Product>().ToTable("Product");
         modelBuilder.Entity<Routine>().ToTable("Routine");
         modelBuilder.Entity<User>().ToTable("User");
-        modelBuilder.Entity<ExerciceRoutine>().ToTable("ExerciceRoutine");
-        modelBuilder.Entity<RoutineUser>().ToTable("RoutineUser");
-
 
     }
+    
     public override int SaveChanges()
     {
         UpdateSoftDeleteStatuses();

@@ -7,6 +7,7 @@ public class Exercice:ISoftDelete
     public string Name{ get; set; }
     public string Description{ get; set; }
     public DateTime DateTime{ get; set; }
-    public List<ExerciceRoutine> RoutineList { get; set; }
+    
+    public List<Routine> Routines { get; set; }
     public bool IsDeleted { get; set; }
 }
