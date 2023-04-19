@@ -5,6 +5,10 @@ namespace StayFit.StayFit_Data.Model.RoutineDTO;
 
 public class RoutineCreateDto
 {
+    
+    [Required(ErrorMessage = "Name type  is required")]
+    public string Name { get; set; }
+    
     [Required(ErrorMessage = "BodyType type  is required")]
     public BodyType BodyType { get; set; }
     
@@ -12,5 +16,5 @@ public class RoutineCreateDto
     public RoutineType RoutineType{ get; set; }
     
     [Required(ErrorMessage = "DateTime type  is required")]
-    public DateTime DateTime{ get; set; }
+    public int DateTime{ get; set; }
 }

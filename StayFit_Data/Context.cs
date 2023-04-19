@@ -44,6 +44,7 @@ public class Context:DbContext
         modelBuilder.Entity<Routine>()
             .HasMany(e => e.Users)
             .WithMany(e => e.Routines);
+            
 
 
 

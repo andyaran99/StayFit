@@ -11,5 +11,5 @@ public class ExerciceCreateDto
     public string Description{ get; set; }
     
     [Required(ErrorMessage = "Body type  is required")]
-    public DateTime DateTime{ get; set; }
+    public int DateTime{ get; set; }
 }

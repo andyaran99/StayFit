@@ -26,7 +26,7 @@ function NewsMessage() {
         <div className="newsMessage">
             {newsMessage.map(message=>
                 <div class='newsMessageTable'>
-                    <table class='table-dark'>
+                    <table class='table'>
                         <thead>
                         <tr>
                             <th scope="col">
@@ -45,16 +45,7 @@ function NewsMessage() {
                 </div>
             
             )}
-           {/* <div className="col-lg-3 col-lg-3 p-2 d-inline-flex product-container">
-
-                {newsMessage.map(message=>
-                    <div className="card" key={message.id}>
-                        <div className="card-body">
-                            <h4 className="title card-title text-center">{message.title}</h4>
-                            <p className="card-text list-description">{message.description}</p>
-                        </div>
-                    </div>)}
-            </div>*/}
+           
 
         </div>
     );

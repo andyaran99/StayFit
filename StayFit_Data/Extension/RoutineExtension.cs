@@ -10,6 +10,7 @@ public static class RoutineExtension
         return new Routine
         {
             Id = routineView.Id,
+            Name = routineView.Name,
             RoutineType = routineView.RoutineType,
             BodyType = routineView.BodyType,
             DateTime = routineView.DateTime
@@ -21,6 +22,7 @@ public static class RoutineExtension
     {
         return new Routine
         {
+            Name = routineView.Name,
             RoutineType = routineView.RoutineType,
             BodyType = routineView.BodyType,
             DateTime = routineView.DateTime
@@ -34,6 +36,7 @@ public static class RoutineExtension
         return new RoutineViewDto
         {
             Id = routineEntity.Id,
+            Name = routineEntity.Name,
             RoutineType = routineEntity.RoutineType,
             BodyType = routineEntity.BodyType,
             DateTime = routineEntity.DateTime

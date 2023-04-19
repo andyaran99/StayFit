@@ -86,7 +86,7 @@ public class DataSeeder
         {
              new()
             {
-                DateTime = new DateTime(0, 0, 0, 0, 15, 0),
+                DateTime = 15,
                 Name = "Push ups",
                 Description =
                     "The push-up (sometimes called a press-up in British English) is a common calisthenics exercise beginning from the prone position.  By raising and lowering the body using the arms, push-ups exercise the pectoral muscles, triceps, and anterior deltoids, with ancillary benefits to the rest of the deltoids, serratus anterior, coracobrachialis and the midsection as a whole.[1] Push-ups are a basic exercise used in civilian athletic training or physical education and commonly in military physical training. They are also a common form of punishment used in the military, school sport, and some martial arts disciplines.",
@@ -102,17 +102,22 @@ public class DataSeeder
             {
                 BodyType = BodyType.Mesomorph,
                 RoutineType = RoutineType.Strenght,
-                DateTime = new DateTime(0, 0, 0, 1, 0, 0)
+                DateTime = 60,
+                
 
             }
         };
-        
-        
+
+
         
         _context.Routines.AddRange(routine);
         _context.Exercices.AddRange(exercice);
         _context.NewsMessages.AddRange(newMessage);
         _context.Products.AddRange(products);
+        
+        _context.Routines.AddRange(routine[0]);
+        _context.Exercices.AddRange(exercice[0]);
+        
         _context.SaveChanges();
             
             

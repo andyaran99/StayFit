@@ -59,8 +59,8 @@ namespace StayFit
     
     builder.Services.AddScoped<ProductService>();
     builder.Services.AddScoped<NewsMessageService>();
-    builder.Services.AddScoped<Exercice>();
-    builder.Services.AddScoped<Routine>();
+    builder.Services.AddScoped<ExerciceService>();
+    builder.Services.AddScoped<RoutineService>();
     
     
     builder.Services.AddScoped<DataSeeder>();

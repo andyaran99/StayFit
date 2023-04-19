@@ -14,7 +14,7 @@ public class User:ISoftDelete
    public UserRole UserRole { get; set; }
    public Payment? Payment { get; set; }
    
-   public List<Routine> Routines { get; set; }
+   public ICollection<Routine> Routines { get; set; }
 
    public bool IsDeleted { get; set; }
 }
