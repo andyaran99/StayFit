@@ -35,19 +35,18 @@ public class Context:DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
+
         modelBuilder.Entity<Routine>()
             .HasMany(e => e.Exercices)
-            .WithMany(e => e.Routines)
-            .UsingEntity<ExerciceRoutine>();
-        
+            .WithMany(e => e.Routines);
+
+
         modelBuilder.Entity<Routine>()
             .HasMany(e => e.Users)
-            .WithMany(e => e.Routines)
-            .UsingEntity<RoutineUser>();
-        
-    
-        
+            .WithMany(e => e.Routines);
+
+
+
         modelBuilder.Entity<Exercice>().ToTable("Exercice");
         modelBuilder.Entity<NewsMessage>().ToTable("NewsMessage");
         modelBuilder.Entity<Payment>().ToTable("Payment");

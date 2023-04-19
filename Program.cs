@@ -48,35 +48,35 @@ namespace StayFit
 
     
     
-    builder.Services.AddTransient<IRepository<Product>, ProductRepository>();
-    builder.Services.AddTransient<IRepository<NewsMessage>, NewsMessageRepository>();
-    builder.Services.AddTransient<IRepository<Exercice>, ExerciceRepository>();
-    builder.Services.AddTransient<IRepository<Routine>, RoutineRepository>();
+    builder.Services.AddScoped<IRepository<Product>, ProductRepository>();
+    builder.Services.AddScoped<IRepository<NewsMessage>, NewsMessageRepository>();
+    builder.Services.AddScoped<IRepository<Exercice>, ExerciceRepository>();
+    builder.Services.AddScoped<IRepository<Routine>, RoutineRepository>();
    
     
     
     
     
-    builder.Services.AddTransient<ProductService>();
-    builder.Services.AddTransient<NewsMessageService>();
-    builder.Services.AddTransient<Exercice>();
-    builder.Services.AddTransient<Routine>();
+    builder.Services.AddScoped<ProductService>();
+    builder.Services.AddScoped<NewsMessageService>();
+    builder.Services.AddScoped<Exercice>();
+    builder.Services.AddScoped<Routine>();
     
     
-    builder.Services.AddTransient<DataSeeder>();
+    builder.Services.AddScoped<DataSeeder>();
     /*
     // Add data repository services
-    builder.Services.AddTransient<IUserRepository, UserRepository>();
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
     
     
-    builder.Services.AddTransient<IRepository<Customer>, CustomerRepository>();
-    builder.Services.AddTransient<IRepository<Partner>, PartnerRepository>();
-    builder.Services.AddTransient<IRepository<Device>, DeviceRepository>();
-    builder.Services.AddTransient<IRepository<Service>, ServiceRepository>();
+    builder.Services.AddScoped<IRepository<Customer>, CustomerRepository>();
+    builder.Services.AddScoped<IRepository<Partner>, PartnerRepository>();
+    builder.Services.AddScoped<IRepository<Device>, DeviceRepository>();
+    builder.Services.AddScoped<IRepository<Service>, ServiceRepository>();
 
     // Authentication services
-    builder.Services.AddTransient<Authenticator>();
-    builder.Services.AddTransient<IPasswordHasher, BCryptPasswordHasher>();
+    builder.Services.AddScoped<Authenticator>();
+    builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
     {
         o.TokenValidationParameters = new TokenValidationParameters()
@@ -92,17 +92,17 @@ namespace StayFit
     });
 
     // Add data logic services
-    builder.Services.AddTransient<UserService>();
+    builder.Services.AddScoped<UserService>();
     
-    builder.Services.AddTransient<IOrderService, OrderService>();
-    builder.Services.AddTransient<IPartnersService, PartnersService>();
-    builder.Services.AddTransient<CustomerService>();
-    builder.Services.AddTransient<DeviceService>();
-    builder.Services.AddTransient<ServiceService>();
+    builder.Services.AddScoped<IOrderService, OrderService>();
+    builder.Services.AddScoped<IPartnersService, PartnersService>();
+    builder.Services.AddScoped<CustomerService>();
+    builder.Services.AddScoped<DeviceService>();
+    builder.Services.AddScoped<ServiceService>();
 
 
 
-    builder.Services.AddTransient<DataSeeder>();
+    builder.Services.AddScoped<DataSeeder>();
 
 
     var app = builder.Build();
