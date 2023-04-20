@@ -11,9 +11,6 @@ public class Context:DbContext
     {
     }
     
-    
-    
-    
     public DbSet<Exercice> Exercices { get; set; }
     public DbSet<NewsMessage> NewsMessages { get; set; }
     public DbSet<Payment>Payments { get; set; }

@@ -64,52 +64,7 @@ namespace StayFit
     
     
     builder.Services.AddScoped<DataSeeder>();
-    /*
-    // Add data repository services
-    builder.Services.AddScoped<IUserRepository, UserRepository>();
     
-    
-    builder.Services.AddScoped<IRepository<Customer>, CustomerRepository>();
-    builder.Services.AddScoped<IRepository<Partner>, PartnerRepository>();
-    builder.Services.AddScoped<IRepository<Device>, DeviceRepository>();
-    builder.Services.AddScoped<IRepository<Service>, ServiceRepository>();
-
-    // Authentication services
-    builder.Services.AddScoped<Authenticator>();
-    builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
-    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
-    {
-        o.TokenValidationParameters = new TokenValidationParameters()
-        {
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:AccessTokenSecret"])),
-            ValidIssuer = builder.Configuration["Authentication:Audience"],
-            ValidAudience = builder.Configuration["Authentication:Issuer"],
-            ValidateIssuerSigningKey = true,
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ClockSkew = TimeSpan.Zero
-        };
-    });
-
-    // Add data logic services
-    builder.Services.AddScoped<UserService>();
-    
-    builder.Services.AddScoped<IOrderService, OrderService>();
-    builder.Services.AddScoped<IPartnersService, PartnersService>();
-    builder.Services.AddScoped<CustomerService>();
-    builder.Services.AddScoped<DeviceService>();
-    builder.Services.AddScoped<ServiceService>();
-
-
-
-    builder.Services.AddScoped<DataSeeder>();
-
-
-    var app = builder.Build();
-
-    
-    */
-
     // Configure the HTTP request pipeline.
     
     

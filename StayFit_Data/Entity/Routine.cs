@@ -5,8 +5,8 @@ public class Routine
     public int Id { get; set; }
     
     public string Name { get; set; }
-    public BodyType BodyType { get; set; }
-    public RoutineType RoutineType{ get; set; }
+    public string BodyType { get; set; }
+    public string RoutineType{ get; set; }
     public int DateTime{ get; set; }
     
     
