@@ -39,7 +39,8 @@ public static class RoutineExtension
             Name = routineEntity.Name,
             RoutineType = routineEntity.RoutineType,
             BodyType = routineEntity.BodyType,
-            DateTime = routineEntity.DateTime
+            DateTime = routineEntity.DateTime,
+            
         };
     }
     
