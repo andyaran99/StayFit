@@ -1,12 +1,16 @@
 ﻿import React, {useEffect, useState} from "react";
 import "./Home.css"
 import Link from "react-router-dom";
+import ReactDOM from "react-dom";
+
+
 // importing Link from react-router-dom to navigate to 
 // different end points.
 
 
-function Routine() {
+function Home() {
     const [routines, setRoutine] = useState([]);
+    const [exercices,setExercices]=useState([])
 
     // Function to collect data
     const getApiData = async () => {
@@ -16,12 +20,21 @@ function Routine() {
 
         setRoutine(response);
         console.log(response);
+    };
+    
+    const getApiData1 = async () => {
+        const response = await fetch(
+            "https://localhost:44368/api/Exercice"
+        ).then((response) => response.json());
 
+        setExercices(response);
+        console.log(response);
     };
 
     useEffect(() => {
         getApiData();
-        console.log(routines);
+        getApiData1()
+        
 
     }, []);
 
@@ -33,10 +46,17 @@ function Routine() {
                     <div className="card" key={routine.id}>
                         <div className="card-body">
                             <h2 className="title card-title text-center">{routine.name}</h2>
-                            <p className="card-text list-description">{routine.description}</p>
-                            <div className="d-flex flex-row justify-content-between">
-                                <h3 className="card-text text-center"><strong>Price: {} Eur</strong></h3>
-                            </div>
+                            <p className="card-text list-description">{routine.bodyType}</p>
+                            <p className="card-text list-description">{routine.routineType}</p>
+                            <p className="card-text list-description">{routine.dateTime}</p>
+                            {exercices.map(exercice =>
+                                <div>
+                                    <h2 className="title card-title text-center">{exercice.name}</h2>
+                                    <p className="card-text list-description">{exercice.description}</p>
+                                    <p className="card-text list-description">{exercice.dateTime}</p>
+                                </div>
+                                )}
+                           
                         </div>
                         <div className="card-footer">
                             <a type="button" className="btn btn-primary btn-checkout" id="btn-checkout">Buy Now</a>
@@ -47,7 +67,8 @@ function Routine() {
         </div>
     );
 
-}  
+}
 
-
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Home />, rootElement);
 export default Home;
