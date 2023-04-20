@@ -1,6 +1,6 @@
 ﻿namespace StayFit.StayFit_Data.Entity;
 
-public class Payment:ISoftDelete
+public class Payment
 {
     public int Id { get; set; }
     public string CardNumber { get; set;}
@@ -8,5 +8,5 @@ public class Payment:ISoftDelete
     public string ExpYear { get; set; }
     public string CVV { get; set; }
     
-    public bool IsDeleted { get; set; }
+   
 }

@@ -1,6 +1,6 @@
 ﻿namespace StayFit.StayFit_Data.Entity;
 
-public class Routine:ISoftDelete
+public class Routine
 {
     public int Id { get; set; }
     
@@ -14,5 +14,5 @@ public class Routine:ISoftDelete
     
     public ICollection<Exercice> Exercices { get; set; }
     
-    public bool IsDeleted { get; set; }
+   
 }

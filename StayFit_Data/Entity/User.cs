@@ -1,6 +1,6 @@
 ﻿namespace StayFit.StayFit_Data.Entity;
 
-public class User:ISoftDelete
+public class User
 {
    public int Id { get; set; }
    
@@ -16,5 +16,5 @@ public class User:ISoftDelete
    
    public ICollection<Routine> Routines { get; set; }
 
-   public bool IsDeleted { get; set; }
+   
 }
