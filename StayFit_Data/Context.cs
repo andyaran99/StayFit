@@ -9,15 +9,6 @@ public class Context:DbContext
 {
     public Context(DbContextOptions options) : base(options)
     {
-        try
-        {
-            QueryFilterManager.Filter<ISoftDelete>(q => q.Where(x => !x.IsDeleted));
-            QueryFilterManager.InitilizeGlobalFilter(this);
-        }
-        catch (InvalidOperationException)
-        {
-
-        }
     }
     
     
@@ -57,32 +48,4 @@ public class Context:DbContext
 
     }
     
-    public override int SaveChanges()
-    {
-        UpdateSoftDeleteStatuses();
-        return base.SaveChanges();
-    }
-
-    public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
-    {
-        UpdateSoftDeleteStatuses();
-        return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
-    }
-
-    private void UpdateSoftDeleteStatuses()
-    {
-        foreach (var entry in ChangeTracker.Entries())
-        {
-            switch (entry.State)
-            {
-                case EntityState.Added:
-                    entry.CurrentValues["IsDeleted"] = false;
-                    break;
-                case EntityState.Deleted:
-                    entry.State = EntityState.Modified;
-                    entry.CurrentValues["IsDeleted"] = true;
-                    break;
-            }
-        }
-    }
 }
