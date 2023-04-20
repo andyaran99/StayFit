@@ -10,4 +10,6 @@ public class RoutineViewDto
     public BodyType BodyType { get; set; }
     public RoutineType RoutineType{ get; set; }
     public int DateTime{ get; set; }
+    
+    public ICollection<Exercice> Exercices { get; set; }
 }

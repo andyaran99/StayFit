@@ -1,6 +1,9 @@
 ﻿using StayFit.StayFit_Data.Model.RoutineDTO;
+using StayFit.StayFit_Data.Extension;
 using StayFit.StayFit_Data.Services;
 using Microsoft.AspNetCore.Mvc;
+using StayFit.StayFit_Data.Entity;
+using StayFit.StayFit_Data.Model.ExerciceDTO;
 
 namespace StayFit.StayFit_Data.Controllers;
 
@@ -10,6 +13,8 @@ namespace StayFit.StayFit_Data.Controllers;
 public class RoutineController:ControllerBase
 {
     private readonly RoutineService _routineService;
+    
+    
     
     public RoutineController(RoutineService routineService)
     {
@@ -23,6 +28,14 @@ public class RoutineController:ControllerBase
         return message;
     }
     
+    /*[HttpGet("{id}/exercices", Name = "GetAllRoutineExercices")]
+    public async Task<ActionResult<List<ExerciceViewDto>>>GetALLRoutineExercice( int routineId)
+    {
+        var message = await _routineService.GetAllRoutineExercice(routineId);
+        return message;
+    }*/
+    
+
     [HttpGet("{id}", Name = "GetRoutineById")]
     public async Task<ActionResult<RoutineViewDto>> GetRoutineById(int id)
     {

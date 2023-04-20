@@ -1,6 +1,7 @@
 ﻿using StayFit.StayFit_Data.Repositories;
 using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Model.RoutineDTO;
+using StayFit.StayFit_Data.Model.ExerciceDTO;
 using StayFit.StayFit_Data.Extension;
 
 namespace StayFit.StayFit_Data.Services;
@@ -17,6 +18,14 @@ public class RoutineService
     {
         var routine = await _routineRepository.GetAll();
         return routine.ToListRoutineViewDto();
+    }
+
+    public async Task<List<ExerciceViewDto>> GetAllRoutineExercice(int routineId)
+    {
+        Routine routine = await _routineRepository.Get(routineId);
+        var exercice = routine.Exercices.ToList();
+        return exercice.ToListExerciceViewDto();
+
     }
     public async Task<Routine> NewRoutine(RoutineCreateDto newDetails)
     {
