@@ -109,14 +109,15 @@ public class DataSeeder
         };
 
 
+        routine[0].Exercices.Add(exercice[0]);
+        exercice[0].Routines.Add(routine[0]);
         
         _context.Routines.AddRange(routine);
         _context.Exercices.AddRange(exercice);
         _context.NewsMessages.AddRange(newMessage);
         _context.Products.AddRange(products);
         
-        _context.Routines.AddRange(routine[0]);
-        _context.Exercices.AddRange(exercice[0]);
+      
         
         _context.SaveChanges();
             

@@ -1,4 +1,5 @@
-﻿using StayFit.StayFit_Data.Entity;
+﻿using System.Runtime.InteropServices;
+using StayFit.StayFit_Data.Entity;
 
 namespace StayFit.StayFit_Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,10 @@ public class RoutineRepository:IRepository<Routine>
             .AsNoTracking()
             .ToListAsync();
     }
+    
+
+       
+    
 
     public async Task<Routine> Get(int id)
     {
