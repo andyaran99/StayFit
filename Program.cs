@@ -8,8 +8,8 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Design;
-
-
+using StayFit.StayFit_Data.Repositories.Repositories;
+using StayFit.StayFit_Data.Services.PasswordHasher;
 
 
 namespace StayFit
@@ -52,6 +52,8 @@ namespace StayFit
     builder.Services.AddScoped<IRepository<NewsMessage>, NewsMessageRepository>();
     builder.Services.AddScoped<IRepository<Exercice>, ExerciceRepository>();
     builder.Services.AddScoped<IRepository<Routine>, RoutineRepository>();
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
+    builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
    
     
     
@@ -61,6 +63,7 @@ namespace StayFit
     builder.Services.AddScoped<NewsMessageService>();
     builder.Services.AddScoped<ExerciceService>();
     builder.Services.AddScoped<RoutineService>();
+    builder.Services.AddScoped<UserService>();
     
     
     builder.Services.AddScoped<DataSeeder>();
