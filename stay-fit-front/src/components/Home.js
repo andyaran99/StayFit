@@ -20,66 +20,11 @@ function Home() {
         setRoutine(response);
         console.log(response);
     };
-    /*const getApiDataR2 = async () => {
-        const response = await fetch(
-            "https://localhost:44368/api/Routine/2"
-        ).then((response) => response.json());
-
-        setRoutine2(response);
-        console.log(response);
-    };
-    const getApiDataR3 = async () => {
-        const response = await fetch(
-            "https://localhost:44368/api/Routine/3"
-        ).then((response) => response.json());
-
-        setRoutine3(response);
-        console.log(response);
-    };
     
-    const getApiData1 = async () => {
-        const response = await fetch(
-            "https://localhost:44368/api/Exercice/1"
-        ).then((response) => response.json());
-
-        setExercices1(response);
-        console.log(response);
-    };
-    const getApiData2 = async () => {
-        const response = await fetch(
-            "https://localhost:44368/api/Exercice/2"
-        ).then((response) => response.json());
-
-        setExercices2(response);
-        console.log(response);
-    };
-    const getApiData3 = async () => {
-        const response = await fetch(
-            "https://localhost:44368/api/Exercice/3"
-        ).then((response) => response.json());
-
-        setExercices3(response);
-        console.log(response);
-    };
-    const getApiData4 = async () => {
-        const response = await fetch(
-            "https://localhost:44368/api/Exercice/4"
-        ).then((response) => response.json());
-
-        setExercices4(response);
-        console.log(response);
-    };*/
 
     useEffect(() => {
         getApiData();
-        /*getApiData1();
-        getApiData2();
-        getApiData3();
-        getApiData4();
-        getApiDataR2();
-        getApiDataR3();*/
-
-
+        
     }, []);
 
     return (
