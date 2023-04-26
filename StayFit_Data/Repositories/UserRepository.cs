@@ -4,7 +4,7 @@ using StayFit.StayFit_Data.Entity;
 namespace StayFit.StayFit_Data.Repositories.Repositories;
 
 
-public class UserRepository:IRepository<User>
+public class UserRepository:IUserRepository
 {
     private readonly Context _context;
 
@@ -13,18 +13,9 @@ public class UserRepository:IRepository<User>
         _context = context;
     }
 
-    public async Task<List<User>> GetAll()
-    {
-        return await _context.Users
-            .AsNoTracking()
-            .ToListAsync();
-    }
+    public async Task<List<User>> GetAll() => await _context.Users.AsNoTracking().ToListAsync();
 
-    public async Task<User> Get(int id)
-    {
-        return await _context.Users
-            .SingleAsync(user => user.Id == id);
-    } 
+    public async Task<User> Get(int id) => await _context.Users.FirstAsync(user => user.Id == id);
 
     public async Task Delete(int id)
     {
@@ -32,16 +23,25 @@ public class UserRepository:IRepository<User>
         await _context.SaveChangesAsync();
     }
 
-    public async Task Add(User item)
+    public async Task Add(User entity)
     {
-        _context.Users.Add(item);
+        await _context.Users.AddAsync(entity);
         await _context.SaveChangesAsync();
     }
 
-    public async Task<User> Update(User updatedUser)
+    public async Task<User> Update(User entity)
     {
-        _context.Users.Update(updatedUser);
+        var userToUpdate = await _context.Users.SingleAsync(u => u.Id == entity.Id);
+        userToUpdate.HashedPassword = entity.HashedPassword;
+        userToUpdate.FirstName = entity.FirstName;
+        userToUpdate.LastName = entity.LastName;
+        userToUpdate.Email = entity.Email;
+        userToUpdate.Payment = entity.Payment;
+        userToUpdate.BodyType = entity.BodyType;
+        userToUpdate.UserRole = entity.UserRole;
         await _context.SaveChangesAsync();
-        return updatedUser;
+        return userToUpdate;
     }
+
+    public async Task<User> GetByUserName(string username) => await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Username == username);
 }

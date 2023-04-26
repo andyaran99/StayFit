@@ -6,11 +6,12 @@ public class User
    
    public string Username {get; set;}
    public string Email { get; set; }
-   public string Password { get; set; }
-   public string FamilyName { get; set; }
+   public string HashedPassword { get; set; }
+   public string FirstName { get; set; } 
    public string LastName { get; set; }
+   
    public BodyType BodyType { get; set; }
-   public DateTime DateTime{ get; set; }
+   
    public UserRole UserRole { get; set; }
    public Payment? Payment { get; set; }
    
