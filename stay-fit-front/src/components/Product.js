@@ -38,7 +38,8 @@ function Product() {
                         </div>
                         <a type="button" className="btn btn-primary btn-checkout" id="btn-checkout">Buy Now</a>
                     </div>
-                </div>)}
+                </div>
+            )}
             </div>
             
         </div>

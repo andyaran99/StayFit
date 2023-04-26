@@ -8,6 +8,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Design;
+using Newtonsoft.Json;
 using StayFit.StayFit_Data.Repositories.Repositories;
 using StayFit.StayFit_Data.Services.PasswordHasher;
 
@@ -38,7 +39,8 @@ namespace StayFit
 
     builder.Services.AddControllers()
         .AddJsonOptions(opt => opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+    
+        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 

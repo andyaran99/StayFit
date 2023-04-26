@@ -12,7 +12,8 @@ public static class ExerciceExtension
             Id = exerciceView.Id,
             Description = exerciceView.Description,
             Name = exerciceView.Name,
-            DateTime = exerciceView.DateTime
+            DateTime = exerciceView.DateTime,
+            Routines = exerciceView.Routines,
 
         };
     }
@@ -23,7 +24,8 @@ public static class ExerciceExtension
         {
             Description = exerciceView.Description,
             Name = exerciceView.Name,
-            DateTime = exerciceView.DateTime
+            DateTime = exerciceView.DateTime,
+            
             
 
         };
@@ -36,7 +38,8 @@ public static class ExerciceExtension
             Id = exerciceEntity.Id,
             Description = exerciceEntity.Description,
             Name = exerciceEntity.Name,
-            DateTime = exerciceEntity.DateTime
+            DateTime = exerciceEntity.DateTime,
+            Routines = exerciceEntity.Routines
         };
     }
     

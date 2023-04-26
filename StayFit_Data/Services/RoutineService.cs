@@ -19,14 +19,7 @@ public class RoutineService
         var routine = await _routineRepository.GetAll();
         return routine.ToListRoutineViewDto();
     }
-
-    public async Task<List<ExerciceViewDto>> GetAllRoutineExercice(int routineId)
-    {
-        Routine routine = await _routineRepository.Get(routineId);
-        var exercice = routine.Exercices.ToList();
-        return exercice.ToListExerciceViewDto();
-
-    }
+    
     public async Task<Routine> NewRoutine(RoutineCreateDto newDetails)
     {
         var detailEntity = newDetails.ToRoutineEntity();

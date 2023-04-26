@@ -17,34 +17,8 @@ function Login() {
        
     }
 
-
-    
-
-    const login = async (username, password) => {
-        try {
-            /*const response = await fetch('https://localhost:44368/api/User')
-                .then((response) => response.json());
-            let data=JSON.parse(response);
-            if(response.data && data.username===username){
-                 console.log(response);
-                 console.log(username);
-                 console.log(password);
-                 const authData={...response.data}
-                 setAuth(authData);
-                 localStorage.setItem("auth", JSON.stringify(authData));
-                 navigate("/");*/
-            }
-                 
-        } catch (error) {
-            if (error.response) {
-                console.log("ceva");
-            } else {
-                throw new Error("error")
-                
-            }
-        }
-    }
-
+    const login = async (username, password) => {}
+        
     return (
         <Card>
             <Card.Body>
