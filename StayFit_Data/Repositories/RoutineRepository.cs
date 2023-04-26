@@ -15,7 +15,7 @@ public class RoutineRepository:IRepository<Routine>
 
     public async Task<List<Routine>> GetAll()
     {
-        return await _context.Routines
+        return await _context.Routines.Include(e=>e.Exercices)
             .AsNoTracking()
             .ToListAsync();
     }

@@ -40,6 +40,7 @@ public static class RoutineExtension
             RoutineType = routineEntity.RoutineType,
             BodyType = routineEntity.BodyType,
             DateTime = routineEntity.DateTime,
+            Exercices = routineEntity.Exercices
             
         };
     }
