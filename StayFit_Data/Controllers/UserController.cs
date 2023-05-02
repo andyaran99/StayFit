@@ -12,12 +12,12 @@ namespace StayFit.StayFit_Data.Controllers
     public class UsersController : ControllerBase
     {
         private readonly UserService _userService;
-        private readonly IPasswordHasher _hasher;
+        
 
-        public UsersController(UserService userService, IPasswordHasher hasher)
+        public UsersController(UserService userService)
         {
             _userService = userService;
-            _hasher = hasher;
+            
         }
 
         [HttpGet]

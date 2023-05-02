@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StayFit.StayFit_Data.Entity;
 using Z.EntityFramework.Plus;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 
 namespace StayFit.StayFit_Data;
 
-public class Context:DbContext
+public class Context:IdentityUserContext<IdentityUser>
 {
     public Context(DbContextOptions options) : base(options)
     {
