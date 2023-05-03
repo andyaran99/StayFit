@@ -4,14 +4,14 @@ using StayFit.StayFit_Data.Repositories;
 using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Microsoft.EntityFrameworkCore.Design;
-using Newtonsoft.Json;
 using Microsoft.AspNetCore.Identity;
 using StayFit.StayFit_Data.Repositories.Repositories;
-using StayFit.StayFit_Data.Services.PasswordHasher;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
+
+
 
 
 namespace StayFit
@@ -56,7 +56,7 @@ namespace StayFit
     builder.Services.AddScoped<IRepository<Exercice>, ExerciceRepository>();
     builder.Services.AddScoped<IRepository<Routine>, RoutineRepository>();
     builder.Services.AddScoped<IUserRepository, UserRepository>();
-    builder.Services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
+    
    
     
     
@@ -67,6 +67,8 @@ namespace StayFit
     builder.Services.AddScoped<ExerciceService>();
     builder.Services.AddScoped<RoutineService>();
     builder.Services.AddScoped<UserService>();
+    
+    
     
     
     builder.Services.AddScoped<DataSeeder>();
@@ -83,6 +85,25 @@ namespace StayFit
             options.Password.RequireLowercase = false;
         })
         .AddEntityFrameworkStores<Context>();
+
+    builder.Services.AddScoped<JwtService>();
+    
+    /*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters()
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidAudience = Configuration["Jwt:Audience"],
+                ValidIssuer = Configuration["Jwt:Issuer"],
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])
+                )
+            };
+        });*/
     
     // Configure the HTTP request pipeline.
     

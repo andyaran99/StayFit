@@ -1,9 +1,11 @@
 ﻿using StayFit.StayFit_Data.Model.UserDTO;
 using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Services;
-using StayFit.StayFit_Data.Services.PasswordHasher;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace StayFit.StayFit_Data.Controllers
 {
@@ -11,13 +13,17 @@ namespace StayFit.StayFit_Data.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly UserService _userService;
-        
+        private readonly JwtService _jwtService;
 
-        public UsersController(UserService userService)
-        {
+        public UsersController(
+            UserManager<IdentityUser> userManager,
+         UserService userService, JwtService jwtService
+        ) {
+            _userManager = userManager;
             _userService = userService;
-            
+            _jwtService = jwtService;
         }
 
         [HttpGet]
@@ -27,21 +33,30 @@ namespace StayFit.StayFit_Data.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserViewDto>> NewUser(UserCreateDto newUser)
+        public async Task<ActionResult<UserCreateIdentityDto>> NewUser(UserCreateIdentityDto newUser)
         {
-            newUser.Password = _hasher.HashPassword(newUser.Password);
-            try
+            
+            if (!ModelState.IsValid)
             {
-                var createdUser = await _userService.NewUser(newUser);
-                return CreatedAtRoute("GetUser",new {userId = createdUser.Id}, createdUser);
+                return BadRequest(ModelState);
             }
-            catch (DbUpdateException e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
 
-        [HttpGet("{userId}", Name = "GetUser")]
+            var result = await _userManager.CreateAsync(
+                new IdentityUser() { UserName = newUser.UserName, Email = newUser.Email },
+                newUser.Password
+            );
+
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            newUser.Password = null;
+            return Created("", newUser);
+        }
+        
+
+        /*[HttpGet("{userId}", Name = "GetUser")]
         public async Task<ActionResult<UserViewDto>> GetUser(int userId)
         {
             try
@@ -52,7 +67,53 @@ namespace StayFit.StayFit_Data.Controllers
             {
                 return NotFound($"User with ID:{userId} not found.");
             }
+        }*/
+        
+        [HttpGet("{username}")]
+        public async Task<ActionResult<UserCreateIdentityDto>> GetUserByName(string username)
+        {
+            IdentityUser user = await _userManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return new UserCreateIdentityDto()
+            {
+                UserName = user.UserName,
+                Email = user.Email
+            };
         }
+        
+        [HttpPost("BearerToken")]
+        public async Task<ActionResult<UserLoginResponceDto>> CreateBearerToken(UserLoginRequestDto request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Bad credentials");
+            }
+
+            var user = await _userManager.FindByNameAsync(request.Username);
+            Console.WriteLine(user.ToString());
+
+            if (user == null)
+            {
+                return BadRequest("Bad credentials");
+            }
+
+            var isPasswordValid = await _userManager.CheckPasswordAsync(user, request.Password);
+
+            if (!isPasswordValid)
+            {
+                return BadRequest("Bad credentials");
+            }
+
+            var token = _jwtService.CreateToken(user);
+
+            return Ok(token);
+        }
+        
 
         [HttpDelete("{userId}")]
         public async Task<IActionResult> DeleteUser(int userId)
