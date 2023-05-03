@@ -15,7 +15,7 @@ namespace StayFit.StayFit_Data.Model.UserDTO
         [StringLength(32, MinimumLength = 2, ErrorMessage = "Last name must be between 2 and 32 characters long")]
         public string LastName { get; set; }
         [Required]
-        [StringLength(32, MinimumLength = 8, ErrorMessage = "Password must be between 8 and 32 characters long")]
+        
         public string Password { get; set; }
         [Required]
         public UserRole UserRole { get; set; }

@@ -37,7 +37,7 @@ public class UserService
     public async Task<UserViewDto> GetById(int userId) => (await _userRepository.Get(userId)).ToUserView();
     
     
-    public async Task<UserLoginDto> GetLoginDtoByUserName(string username)
+    public async Task<UserLoginRequestDto> GetLoginDtoByUserName(string username)
     {
         var user = await _userRepository.GetByUserName(username);
         /*var functionId = await GetFunctionId(user);*/

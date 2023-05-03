@@ -60,14 +60,12 @@ namespace StayFit.StayFit_Data.Extensions
             };
         }
 
-        public static UserLoginDto ToUserLoginDto(this User user)
+        public static UserLoginRequestDto ToUserLoginDto(this User user)
         {
-            return new UserLoginDto
+            return new UserLoginRequestDto()
             {
-                Id = user.Id,
-                Role = user.UserRole,
                 Username = user.Username,
-                HashedPassword = user.HashedPassword,
+                Password = user.HashedPassword,
                 
             };
         }

@@ -1,10 +1,11 @@
 ﻿using StayFit.StayFit_Data.Model.NewsMessageDTO;
 using StayFit.StayFit_Data.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StayFit.StayFit_Data.Controllers;
 
-
+[Authorize]
 [Route("api/Message")]
 [ApiController]
 public class NewsMessageController:ControllerBase
