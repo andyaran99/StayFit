@@ -1,10 +1,11 @@
-﻿using StayFit.StayFit_Data.Model.ProductDto;
+﻿using Microsoft.AspNetCore.Authorization;
+using StayFit.StayFit_Data.Model.ProductDto;
 using StayFit.StayFit_Data.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StayFit.StayFit_Data.Controllers;
 
-
+[Authorize]
 [Route("api/Product")]
 [ApiController]
 public class ProductController:ControllerBase

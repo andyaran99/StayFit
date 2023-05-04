@@ -20,6 +20,7 @@ function Home() {
         setRoutine(response);
         console.log(response);
     };
+
     
 
     useEffect(() => {

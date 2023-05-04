@@ -88,7 +88,7 @@ namespace StayFit
 
     builder.Services.AddScoped<JwtService>();
     
-    /*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
         {
             options.TokenValidationParameters = new TokenValidationParameters()
@@ -97,13 +97,13 @@ namespace StayFit
                 ValidateAudience = true,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
-                ValidAudience = Configuration["Jwt:Audience"],
-                ValidIssuer = Configuration["Jwt:Issuer"],
+                ValidAudience = builder.Configuration["Jwt:Audience"],
+                ValidIssuer =builder. Configuration["Jwt:Issuer"],
                 IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])
+                    Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
                 )
             };
-        });*/
+        });
     
     // Configure the HTTP request pipeline.
     

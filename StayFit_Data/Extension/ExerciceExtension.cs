@@ -52,4 +52,5 @@ public static class ExerciceExtension
         }
         return result;
     }
+    
 }

@@ -1,4 +1,5 @@
-﻿using StayFit.StayFit_Data.Model.UserDTO;
+﻿using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+using StayFit.StayFit_Data.Model.UserDTO;
 using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Services;
 
@@ -30,6 +31,23 @@ namespace StayFit.StayFit_Data.Controllers
         public async Task<ActionResult<List<UserViewDto>>> ListUsers()
         {
             return await _userService.ListUsers();
+        }
+        
+        
+        [HttpGet("{username}")]
+        public async Task<ActionResult<UserLoginRequestDto>> GetUserByName(string username)
+        {
+            try
+            {
+                return await _userService.GetLoginDtoByUserName(username);
+
+            }
+            catch (InvalidOperationException)
+            {
+                return NotFound($"User with ID:{username} not found.");
+            }
+
+            
         }
 
         [HttpPost]
@@ -69,22 +87,7 @@ namespace StayFit.StayFit_Data.Controllers
             }
         }*/
         
-        [HttpGet("{username}")]
-        public async Task<ActionResult<UserCreateIdentityDto>> GetUserByName(string username)
-        {
-            IdentityUser user = await _userManager.FindByNameAsync(username);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return new UserCreateIdentityDto()
-            {
-                UserName = user.UserName,
-                Email = user.Email
-            };
-        }
+       
         
         [HttpPost("BearerToken")]
         public async Task<ActionResult<UserLoginResponceDto>> CreateBearerToken(UserLoginRequestDto request)
@@ -93,7 +96,6 @@ namespace StayFit.StayFit_Data.Controllers
             {
                 return BadRequest("Bad credentials");
             }
-
             var user = await _userManager.FindByNameAsync(request.Username);
             Console.WriteLine(user.ToString());
 
@@ -110,7 +112,6 @@ namespace StayFit.StayFit_Data.Controllers
             }
 
             var token = _jwtService.CreateToken(user);
-
             return Ok(token);
         }
         
