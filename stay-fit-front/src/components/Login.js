@@ -12,16 +12,19 @@ function Login() {
     
     const handleSubmit = async () => {
         try{
-            const response = await fetch(`https://localhost:44368/api/User/BearerToken`, {
+
+            const response = await fetch(`https://localhost:44368/api/User/BearerToken`,{
                 method: 'POST',
-                body: JSON.stringify({ username, password })
+                body: JSON.stringify({"username": username, "password":password})
             });
+           
+            
             const { jwt_token } = await response.json();
             console.log(jwt_token);
             
             if (jwt_token != null) {
                 setJwtToken(jwt_token);
-                navigate('/Product');
+                navigate('/NewsMessage');
             }
         }
         catch (error) {
@@ -32,14 +35,18 @@ function Login() {
     }
 
     useEffect(() => {
-        handleSubmit();
+        getApiData();
+        console.log(products);
 
     }, []);
-    
+
+
+
+
     return (
         <Card>
             <Card.Body>
-                <Form >
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="text" id="Username" name="Username" onInput={e => setUsername(e.target.value)} required />
@@ -48,7 +55,7 @@ function Login() {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" id="Password" name="Password" onInput={e => setPassword(e.target.value)} required />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onSubmit={handleSubmit}>Login</Button>
+                    <Button variant="primary" type="submit" >Login</Button>
                 </Form>
                 
             </Card.Body>

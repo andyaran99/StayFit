@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+﻿using System.Threading.Channels;
+using Azure.Identity;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using StayFit.StayFit_Data.Model.UserDTO;
 using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Services;
-
+using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Newtonsoft.Json.Linq;
 
 
 namespace StayFit.StayFit_Data.Controllers
@@ -46,14 +50,24 @@ namespace StayFit.StayFit_Data.Controllers
             {
                 return NotFound($"User with ID:{username} not found.");
             }
-
             
+        }
+        [HttpGet("{userId}", Name = "GetUser")]
+        public async Task<ActionResult<UserViewDto>> GetUser(int userId)
+        {
+            try
+            {
+                return await _userService.GetById(userId);
+            }
+            catch (InvalidOperationException)
+            {
+                return NotFound($"User with ID:{userId} not found.");
+            }
         }
 
         [HttpPost]
         public async Task<ActionResult<UserCreateIdentityDto>> NewUser(UserCreateIdentityDto newUser)
         {
-            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,18 +88,7 @@ namespace StayFit.StayFit_Data.Controllers
         }
         
 
-        /*[HttpGet("{userId}", Name = "GetUser")]
-        public async Task<ActionResult<UserViewDto>> GetUser(int userId)
-        {
-            try
-            {
-                return await _userService.GetById(userId);
-            }
-            catch (InvalidOperationException)
-            {
-                return NotFound($"User with ID:{userId} not found.");
-            }
-        }*/
+        
         
        
         
@@ -97,8 +100,6 @@ namespace StayFit.StayFit_Data.Controllers
                 return BadRequest("Bad credentials");
             }
             var user = await _userManager.FindByNameAsync(request.Username);
-            Console.WriteLine(user.ToString());
-
             if (user == null)
             {
                 return BadRequest("Bad credentials");
@@ -114,6 +115,15 @@ namespace StayFit.StayFit_Data.Controllers
             var token = _jwtService.CreateToken(user);
             return Ok(token);
         }
+
+        /*[HttpPost("Login")]
+        public async Task<ActionResult<UserLoginResponceDto>> Login(UserLoginRequestDto data)
+        {
+            {
+                var token = CreateBearerToken(data);
+                return await token;
+            }
+        }*/
         
 
         [HttpDelete("{userId}")]
