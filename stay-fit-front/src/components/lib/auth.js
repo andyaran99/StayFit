@@ -6,17 +6,17 @@ import stream from "stream";
 
 
 export function getJwtToken() {
-    return sessionStorage.getItem("jwt")
+    return localStorage.getItem("jwt")
 }
 
 export function setJwtToken(token) {
-    sessionStorage.setItem("jwt", token)
+    localStorage.setItem("jwt", token)
 }
 
 export function getRefreshToken() {
-    return sessionStorage.getItem("refreshToken")
+    return localStorage.getItem("refreshToken")
 }
 
 export function setRefreshToken(token) {
-    sessionStorage.setItem("refreshToken", token)
+   localStorage.setItem("refreshToken", token)
 }
