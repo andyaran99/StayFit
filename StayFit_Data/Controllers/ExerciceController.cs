@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace StayFit.StayFit_Data.Controllers;
 
-[Route("api/Exercice")]
+[Route("api/Exercices")]
 [ApiController]
 public class ExerciceController:ControllerBase
 {

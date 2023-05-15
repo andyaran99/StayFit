@@ -1,6 +1,6 @@
 ﻿import {useEffect, useState} from "react";
 import { Button, Form, Card } from "react-bootstrap";
-import { setJwtToken, setRefreshToken } from "./lib/auth"
+import { setJwtToken, setRefreshToken,setButtonLogOut } from "./lib/auth"
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
@@ -19,7 +19,7 @@ function Login() {
     const tokenData = async () => {
         try{
 
-            const response = await axios.post(`https://localhost:44368/api/User/BearerToken`,
+            const response = await axios.post(`https://localhost:44368/api/Users/BearerToken`,
                 {username, password}
             ).then(r=>r.data);
             console.log(response);
@@ -27,7 +27,9 @@ function Login() {
             
             if (response != null) {
                 setJwtToken(response);
-                navigate('/NewsMessage');
+                console.log(localStorage);
+                setButtonLogOut();
+                navigate('/NewsMessages');
             }
         }
         catch (error) {

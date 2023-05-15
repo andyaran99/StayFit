@@ -2,12 +2,12 @@
 import ReactDOM from "react-dom";
 import {Await} from "react-router-dom";
 
-function Routine() {
+function Routines() {
     const [routines, setRoutine] = useState([]);
 
     // Function to collect data
     const getApiData = async () => {
-        const response = await fetch("https://localhost:44368/api/Routine")
+        const response = await fetch("https://localhost:44368/api/Routines")
             .then((response) => response.json());
             
 
@@ -42,5 +42,5 @@ function Routine() {
     );
 }
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Routine />, rootElement);
-export default Routine;
+ReactDOM.render(<Routines />, rootElement);
+export default Routines;

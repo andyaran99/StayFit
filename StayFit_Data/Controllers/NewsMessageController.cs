@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace StayFit.StayFit_Data.Controllers;
 
 
-[Route("api/Message")]
+[Route("api/Messages")]
 [ApiController]
 public class NewsMessageController:ControllerBase
 {

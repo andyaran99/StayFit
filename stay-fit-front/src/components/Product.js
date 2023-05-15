@@ -4,13 +4,13 @@ import "./Product.css"
 
 
 
-function Product() {
+function Products() {
     const [products, setProduct] = useState([]);
 
     // Function to collect data
     const getApiData = async () => {
         const response = await fetch(
-            "https://localhost:44368/api/Product"
+            "https://localhost:44368/api/Products"
         ).then((response) => response.json());
 
         setProduct(response);
@@ -46,8 +46,8 @@ function Product() {
     );
 }
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Product />, rootElement);
-export default Product;
+ReactDOM.render(<Products />, rootElement);
+export default Products;
 
 
 

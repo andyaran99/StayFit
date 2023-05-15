@@ -20,3 +20,8 @@ export function getRefreshToken() {
 export function setRefreshToken(token) {
    localStorage.setItem("refreshToken", token)
 }
+
+export function setButtonLogOut(){
+    document.getElementById("login")
+}
+

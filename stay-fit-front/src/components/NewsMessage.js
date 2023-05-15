@@ -2,13 +2,13 @@
 import ReactDOM from "react-dom";
 import "./NewsMessage.css";
 
-function NewsMessage() {
+function NewsMessages() {
     const [newsMessage, setNewsMessage] = useState([]);
 
     // Function to collect data
     const getApiData = async () => {
         const response = await fetch(
-            "https://localhost:44368/api/Message"
+            "https://localhost:44368/api/Messages"
         ).then((response) => response.json());
 
         setNewsMessage(response);
@@ -51,5 +51,5 @@ function NewsMessage() {
     );
 }
 const rootElement = document.getElementById("root");
-ReactDOM.render(<NewsMessage />, rootElement);
-export default NewsMessage;
+ReactDOM.render(<NewsMessages />, rootElement);
+export default NewsMessages;

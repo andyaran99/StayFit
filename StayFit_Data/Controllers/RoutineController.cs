@@ -7,7 +7,7 @@ using StayFit.StayFit_Data.Model.ExerciceDTO;
 
 namespace StayFit.StayFit_Data.Controllers;
 
-[Route("api/Routine")]
+[Route("api/Routines")]
 [ApiController]
 
 public class RoutineController:ControllerBase

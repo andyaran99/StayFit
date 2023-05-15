@@ -14,7 +14,7 @@ function Home() {
     // Function to collect data
     const getApiData = async () => {
         const response = await fetch(
-            "https://localhost:44368/api/Routine"
+            "https://localhost:44368/api/Routines"
         ).then((response) => response.json());
 
         setRoutine(response);

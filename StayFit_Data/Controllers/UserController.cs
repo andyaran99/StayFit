@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 
 namespace StayFit.StayFit_Data.Controllers
 {
-    [Route("api/User")]
+    [Route("api/Users")]
     [ApiController]
     public class UsersController : ControllerBase
     {

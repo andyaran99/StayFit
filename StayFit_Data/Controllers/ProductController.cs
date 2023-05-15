@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace StayFit.StayFit_Data.Controllers;
 
 [Authorize]
-[Route("api/Product")]
+[Route("api/Products")]
 [ApiController]
 public class ProductController:ControllerBase
 {
