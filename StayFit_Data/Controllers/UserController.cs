@@ -116,14 +116,7 @@ namespace StayFit.StayFit_Data.Controllers
             return Ok(token);
         }
 
-        /*[HttpPost("Login")]
-        public async Task<ActionResult<UserLoginResponceDto>> Login(UserLoginRequestDto data)
-        {
-            {
-                var token = CreateBearerToken(data);
-                return await token;
-            }
-        }*/
+        
         
 
         [HttpDelete("{userId}")]

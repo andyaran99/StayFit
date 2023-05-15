@@ -9,13 +9,19 @@ function Login() {
     const [password, setPassword] = useState("");
     
     const navigate=useNavigate();
+
+
+    const handleSubmit=(e)=>{e.preventDefault()
+        tokenData();
+    }
     
-    const handleSubmit = async () => {
+    
+    const tokenData = async () => {
         try{
 
             const response = await fetch(`https://localhost:44368/api/User/BearerToken`,{
                 method: 'POST',
-                body: JSON.stringify({"username": username, "password":password})
+                body: JSON.stringify({"username": username.toString(), "password":password.toString()})
             });
            
             
@@ -34,19 +40,14 @@ function Login() {
         }
     }
 
-    useEffect(() => {
-        getApiData();
-        console.log(products);
-
-    }, []);
-
-
-
-
+    
     return (
         <Card>
             <Card.Body>
-                <Form onSubmit={handleSubmit}>
+                
+               
+               
+               <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="text" id="Username" name="Username" onInput={e => setUsername(e.target.value)} required />
