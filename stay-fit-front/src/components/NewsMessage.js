@@ -12,13 +12,10 @@ function NewsMessages() {
         ).then((response) => response.json());
 
         setNewsMessage(response);
-        
-
     };
 
     useEffect(() => {
         getApiData();
-        console.log(newsMessage);
 
     }, []);
 

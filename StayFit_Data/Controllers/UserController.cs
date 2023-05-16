@@ -117,7 +117,6 @@ namespace StayFit.StayFit_Data.Controllers
         }
 
         
-        
 
         [HttpDelete("{userId}")]
         public async Task<IActionResult> DeleteUser(int userId)

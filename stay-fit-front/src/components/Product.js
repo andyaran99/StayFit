@@ -1,26 +1,39 @@
 ﻿import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import "./Product.css"
+import {getJwtToken} from "./lib/auth"
+import axios from "axios";
+
 
 
 
 function Products() {
     const [products, setProduct] = useState([]);
+    console.log(localStorage);
+
 
     // Function to collect data
     const getApiData = async () => {
-        const response = await fetch(
-            "https://localhost:44368/api/Products"
-        ).then((response) => response.json());
-
-        setProduct(response);
-        console.log(response);
         
-    };
+        const token=localStorage.getItem("jwt")
+        console.log(token);
+        
+        axios.get('https://localhost:44368/api/Products', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                console.log(res.data)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }
+       
 
     useEffect(() => {
         getApiData();
-        console.log(products);
         
     }, []);
 
@@ -48,6 +61,7 @@ function Products() {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<Products />, rootElement);
 export default Products;
+
 
 
 

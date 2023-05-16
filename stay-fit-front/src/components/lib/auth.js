@@ -1,5 +1,6 @@
 ﻿import crypto from "crypto";
 import stream from "stream";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -10,7 +11,7 @@ export function getJwtToken() {
 }
 
 export function setJwtToken(token) {
-    localStorage.setItem("jwt", token)
+    localStorage.setItem('jwt', token)
 }
 
 export function getRefreshToken() {
@@ -22,6 +23,24 @@ export function setRefreshToken(token) {
 }
 
 export function setButtonLogOut(){
-    document.getElementById("login")
+    if(getJwtToken()!=null){
+        var element= document.getElementById("login");
+        element.innerHTML="Logout";
+        element.addEventListener("click",logoutFunction);
+    }
+    else{
+        console.log("Already Login")
+    }
+   
 }
+
+export function logoutFunction(){
+    setJwtToken("jwt",null);
+    console.log(localStorage);
+    var element= document.getElementById("login");
+    element.innerHTML="Login";
+    element.removeEventListener("click",logoutFunction);
+    
+}
+
 

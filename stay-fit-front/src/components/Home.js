@@ -10,7 +10,9 @@ import ReactDOM from "react-dom";
 
 function Home() {
     const [routines, setRoutine] = useState([]);
-    
+    console.log(localStorage);
+
+
     // Function to collect data
     const getApiData = async () => {
         const response = await fetch(
@@ -18,7 +20,6 @@ function Home() {
         ).then((response) => response.json());
 
         setRoutine(response);
-        console.log(response);
     };
 
     
