@@ -11,7 +11,7 @@ namespace StayFit.StayFit_Data.Services;
 
 public class JwtService
 {
-    private const int EXPIRATION_MINUTES = 1;
+    private const int EXPIRATION_MINUTES = 15;
 
     private readonly IConfiguration _configuration;
 

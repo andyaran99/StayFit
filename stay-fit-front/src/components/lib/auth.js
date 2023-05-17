@@ -11,7 +11,7 @@ export function getJwtToken() {
 }
 
 export function setJwtToken(token) {
-    localStorage.setItem('jwt', token)
+    localStorage.setItem('jwt', token.token)
 }
 
 export function getRefreshToken() {

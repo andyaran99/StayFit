@@ -23,7 +23,7 @@ function Login() {
             const response = await axios.post(`https://localhost:44368/api/Users/BearerToken`,
                 {username, password}
             ).then(r=>r.data);
-             
+             console.log(response);
             if (response != null) {
                 setJwtToken(response);
                 console.log(localStorage);

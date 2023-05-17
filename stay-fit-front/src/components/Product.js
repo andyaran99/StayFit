@@ -9,7 +9,7 @@ import axios from "axios";
 
 function Products() {
     const [products, setProduct] = useState([]);
-    console.log(localStorage);
+    
 
 
     // Function to collect data
@@ -18,17 +18,17 @@ function Products() {
         const token=localStorage.getItem("jwt")
         console.log(token);
         
-        axios.get('https://localhost:44368/api/Products', {
+        const responce= axios.get('https://localhost:44368/api/Products', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
-            .then((res) => {
-                console.log(res.data)
-            })
             .catch((error) => {
                 console.error(error)
-            })
+            });
+        
+        const prod=(await responce).data;
+        setProduct(prod);
     }
        
 
