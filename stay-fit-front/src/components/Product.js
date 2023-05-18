@@ -16,8 +16,6 @@ function Products() {
     const getApiData = async () => {
         
         const token=localStorage.getItem("jwt")
-        console.log(token);
-        
         const responce= axios.get('https://localhost:44368/api/Products', {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -39,7 +37,7 @@ function Products() {
 
     return (
         <div className="Product">
-            <div className="col-lg-3 col-lg-3 p-2 d-inline-flex product-container">
+            <div className="col-lg-3 col-md-2 col-sm-1 p-2 d-inline-flex product-container">
                  
             {products.map(product=>
                 <div className="card" key={product.id}>
@@ -49,12 +47,14 @@ function Products() {
                         <div className="d-flex flex-row justify-content-between">
                             <h3 className="card-text text-center"><strong>Price: {product.price} Eur</strong></h3>
                         </div>
-                        <a type="button" className="btn btn-primary btn-checkout" id="btn-checkout">Buy Now</a>
+                        <div className="card-footer">
+                            <a type="button" className="btn btn-primary btn-checkout" id="btn-checkout">Buy Now</a>
+                        </div>
+                        
                     </div>
                 </div>
             )}
             </div>
-            
         </div>
     );
 }

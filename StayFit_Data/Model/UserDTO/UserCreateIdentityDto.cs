@@ -5,7 +5,7 @@ namespace StayFit.StayFit_Data.Model.UserDTO;
 public class UserCreateIdentityDto
 {
     [Required]
-    public string UserName { get; set; }
+    public string Username { get; set; }
     [Required]
     public string Password { get; set; }
     [Required]

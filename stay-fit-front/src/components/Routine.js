@@ -9,18 +9,12 @@ function Routines() {
     const getApiData = async () => {
         const response = await fetch("https://localhost:44368/api/Routines")
             .then((response) => response.json());
-            
-
         setRoutine(response);
-        console.log(response)
-
-
+        console.log(response);
     };
 
     useEffect(() => {
         getApiData();
-        console.log(routines);
-
     }, []);
 
     return (
@@ -37,7 +31,6 @@ function Routines() {
                         </div>
                     </div>)}
             </div>
-
         </div>
     );
 }

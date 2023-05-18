@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './Layout.css';
 
 
+
 const Layout = () => {
     return (
         <div>
@@ -28,6 +29,10 @@ const Layout = () => {
                         <li className="nav-item">
                             <Link class="nav-link" id="login" to="Login">Login</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link class="nav-link" to="Register">Register</Link>
+                        </li>
+                        
                     </ul>
                 </div>
             </nav>

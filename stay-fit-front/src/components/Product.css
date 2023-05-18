@@ -1,7 +1,20 @@
 ﻿.card{
+    display: block;
     min-height: 700px;
     min-width: 350px;
     margin-bottom: 16px;
     margin-left: 30%;
+    margin-right: 30%;
 }
+#btn-checkout {
+    position: absolute;
+    bottom: 0;
+    margin-left: 80px;
+}
+@media (max-width: 700px) {
+    .card{
+        display: flex;
+    }
+}
+
 

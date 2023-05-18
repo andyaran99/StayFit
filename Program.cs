@@ -57,9 +57,6 @@ namespace StayFit
     builder.Services.AddScoped<IRepository<Routine>, RoutineRepository>();
     builder.Services.AddScoped<IUserRepository, UserRepository>();
     
-   
-    
-    
     
     
     builder.Services.AddScoped<ProductService>();
@@ -67,8 +64,6 @@ namespace StayFit
     builder.Services.AddScoped<ExerciceService>();
     builder.Services.AddScoped<RoutineService>();
     builder.Services.AddScoped<UserService>();
-    
-    
     
     
     builder.Services.AddScoped<DataSeeder>();
@@ -123,7 +118,6 @@ namespace StayFit
     app.UseHttpsRedirection();
 
     
-
     app.UseCors(myAllowSpecificOrigins);
 
     app.UseAuthentication();

@@ -47,9 +47,7 @@ function Home() {
                         </div>
                         )}
                     </div>
-                    <div className="card-footer">
-                        <a type="button" className="btn btn-primary btn-checkout" id="btn-checkout">Buy Now</a>
-                    </div>
+                    
                 </div>)}
             </div>
         </div>

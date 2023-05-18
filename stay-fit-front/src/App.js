@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Products from "./components/Product";
 import NewsMessages from "./components/NewsMessage";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
                     <Route path="Products" element={<Products />} />
                     <Route path="NewsMessages" element={<NewsMessages />} />
                     <Route path="Login" element={<Login />}/>
+                    <Route path="Register" element={<Register />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

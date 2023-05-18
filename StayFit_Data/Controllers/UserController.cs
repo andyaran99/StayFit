@@ -74,7 +74,7 @@ namespace StayFit.StayFit_Data.Controllers
             }
 
             var result = await _userManager.CreateAsync(
-                new IdentityUser() { UserName = newUser.UserName, Email = newUser.Email },
+                new IdentityUser() { UserName = newUser.Username, Email = newUser.Email },
                 newUser.Password
             );
 

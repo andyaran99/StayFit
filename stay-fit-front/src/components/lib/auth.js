@@ -36,7 +36,6 @@ export function setButtonLogOut(){
 
 export function logoutFunction(){
     setJwtToken("jwt",null);
-    console.log(localStorage);
     var element= document.getElementById("login");
     element.innerHTML="Login";
     element.removeEventListener("click",logoutFunction);
