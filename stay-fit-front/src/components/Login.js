@@ -50,7 +50,6 @@ function Login() {
                     </Form.Group>
                     <Button variant="primary" type="submit" >Login</Button>
                 </Form>
-                
             </Card.Body>
         </Card>
     );

@@ -25,14 +25,14 @@ function Register() {
         try{
             const response = await axios.post(`https://localhost:44368/api/Users`,
                 {username, password, email}
-            )
+            ).then(r=>r.data);
 
             if (response != null) {
                 navigate('/NewsMessages');
             }
         }
         catch (error) {
-            console.log("Token failled");
+            console.log("Register failled");
             navigate('/');
         }
     }
