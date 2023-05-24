@@ -1,17 +1,21 @@
 ﻿import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import "./NewsMessage.css";
+import axios from "axios";
 
 function NewsMessages() {
     const [newsMessage, setNewsMessage] = useState([]);
 
     // Function to collect data
     const getApiData = async () => {
-        const response = await fetch(
-            "https://localhost:44368/api/Messages"
-        ).then((response) => response.json());
-
-        setNewsMessage(response);
+        const token=localStorage.getItem("jwt");
+        const response = axios.get("https://localhost:44368/api/Messages",{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        var message=(await response).data
+        setNewsMessage(message);
     };
 
     useEffect(() => {
@@ -22,8 +26,8 @@ function NewsMessages() {
     return (
         <div className="newsMessage">
             {newsMessage.map(message=>
-                <div class='newsMessageTable'>
-                    <table class='table'>
+                <div className='newsMessageTable'>
+                    <table className='table'>
                         <thead>
                         <tr>
                             <th scope="col">

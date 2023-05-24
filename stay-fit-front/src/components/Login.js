@@ -26,7 +26,7 @@ function Login() {
             if (response != null) {
                 setJwtToken(response);
                 setButtonLogOut();
-                navigate('/NewsMessages');
+                navigate('/Products');
             }
         }
         catch (error) {

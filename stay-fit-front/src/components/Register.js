@@ -53,7 +53,7 @@ function Register() {
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="text" id="Email" name="Email" onInput={e => setEmail(e.target.value)} required />
                     </Form.Group>
-                    <Button variant="primary" type="submit" >Login</Button>
+                    <Button variant="primary" type="submit" >Register</Button>
                 </Form>
 
             </Card.Body>

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./Product.css"
 import {getJwtToken} from "./lib/auth"
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 
 
@@ -10,17 +11,14 @@ import axios from "axios";
 function Products() {
     const [products, setProduct] = useState([]);
     
+    
 
 
     // Function to collect data
     const getApiData = async () => {
         
-        const token=localStorage.getItem("jwt")
-        const responce= axios.get('https://localhost:44368/api/Products', {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
+        
+        const responce= axios.get('https://localhost:44368/api/Products', )
             .catch((error) => {
                 console.error(error)
             });
@@ -28,6 +26,8 @@ function Products() {
         const prod=(await responce).data;
         setProduct(prod);
     }
+    
+    
        
 
     useEffect(() => {
@@ -48,7 +48,8 @@ function Products() {
                             <h3 className="card-text text-center"><strong>Price: {product.price} Eur</strong></h3>
                         </div>
                         <div className="card-footer">
-                            <a type="button" className="btn btn-primary btn-checkout" id="btn-checkout">Buy Now</a>
+                            <Link className="btn btn-primary btn-checkout" to="/Payment">BuyNow</Link>
+                            {/*<a type="button" className="btn btn-primary btn-checkout" id="btn-checkout">Buy Now</a>*/}
                         </div>
                         
                     </div>
