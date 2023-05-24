@@ -18,6 +18,8 @@
       </PackageReference>
       <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.0-preview.2.23128.3" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.2.23128.3" />
+      <PackageReference Include="PayPal" Version="2.0.0-rc2" />
+      <PackageReference Include="Stripe.net" Version="41.18.0-beta.1" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
       <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="8.0.0-preview.2.23128.3-01" />
     </ItemGroup>
