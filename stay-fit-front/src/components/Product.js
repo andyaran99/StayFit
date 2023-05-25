@@ -48,8 +48,8 @@ function Products() {
                             <h3 className="card-text text-center"><strong>Price: {product.price} Eur</strong></h3>
                         </div>
                         <div className="card-footer">
-                            <Link className="btn btn-primary btn-checkout" to="/Payment">BuyNow</Link>
-                            {/*<a type="button" className="btn btn-primary btn-checkout" id="btn-checkout">Buy Now</a>*/}
+                            {/*<Link className="btn btn-primary btn-checkout" to="/Payment">BuyNow</Link>*/}
+                            <a type="button" className="btn btn-primary btn-checkout" id="btn-checkout" >Buy Now</a>
                         </div>
                         
                     </div>
