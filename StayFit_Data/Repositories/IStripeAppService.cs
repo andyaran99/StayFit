@@ -7,6 +7,7 @@ namespace StayFit.StayFit_Data.Repositories
     {
         Task<StripeCustomer> AddStripeCustomerAsync(AddStripeCustomer customer, CancellationToken ct);
         Task<StripePayment> AddStripePaymentAsync(AddStripePayment payment, CancellationToken ct);
+        
     }
 }
 

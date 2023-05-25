@@ -7,6 +7,7 @@ import NewsMessages from "./components/NewsMessage";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Payment from "./components/Payment";
+import AddPayment from "./components/Payment";
 
 
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
                     <Route path="NewsMessages" element={<NewsMessages />} />
                     <Route path="Login" element={<Login />}/>
                     <Route path="Register" element={<Register />}/>
-                    <Route path="Payment" element={<Payment/>}/>
+                    <Route path="Payment" element={<Payment />}/>
                 </Route>
             </Routes>
         </BrowserRouter>
