@@ -149,20 +149,7 @@ public class DataSeeder
             }
         };
 
-        var user = new User[]
-        {
-            new()
-            {
-                Username = "MargoMarale65",
-                BodyType = BodyType.Endomorph,
-                Email = "margo@test.com",
-                FirstName = "Margo",
-                LastName = "Letea",
-                HashedPassword = "1234",
-                UserRole = UserRole.Member,
-            }
-        };
-
+        
 
         
       
@@ -171,7 +158,7 @@ public class DataSeeder
         _context.Exercices.AddRange(exercice);
         _context.NewsMessages.AddRange(newMessage);
         _context.Products.AddRange(products);
-        _context.Users.AddRange(user);
+        
         
         exercice[0].Routines.Add(routine[0]);
         exercice[0].Routines.Add(routine[1]);

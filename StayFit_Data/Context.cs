@@ -15,10 +15,9 @@ public class Context:IdentityUserContext<IdentityUser>
     
     public DbSet<Exercice> Exercices { get; set; }
     public DbSet<NewsMessage> NewsMessages { get; set; }
-    public DbSet<Payment>Payments { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Routine> Routines { get; set; }
-    public DbSet<User> Users { get; set; }
+    
     
     
     
@@ -40,10 +39,9 @@ public class Context:IdentityUserContext<IdentityUser>
 
         modelBuilder.Entity<Exercice>().ToTable("Exercice");
         modelBuilder.Entity<NewsMessage>().ToTable("NewsMessage");
-        modelBuilder.Entity<Payment>().ToTable("Payment");
         modelBuilder.Entity<Product>().ToTable("Product");
         modelBuilder.Entity<Routine>().ToTable("Routine");
-        modelBuilder.Entity<User>().ToTable("User");
+        
 
     }
     

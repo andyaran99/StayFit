@@ -5,7 +5,6 @@ using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using StayFit.StayFit_Data.Repositories.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -55,7 +54,7 @@ namespace StayFit
     builder.Services.AddScoped<IRepository<NewsMessage>, NewsMessageRepository>();
     builder.Services.AddScoped<IRepository<Exercice>, ExerciceRepository>();
     builder.Services.AddScoped<IRepository<Routine>, RoutineRepository>();
-    builder.Services.AddScoped<IUserRepository, UserRepository>();
+    
     
     
     
@@ -63,10 +62,11 @@ namespace StayFit
     builder.Services.AddScoped<NewsMessageService>();
     builder.Services.AddScoped<ExerciceService>();
     builder.Services.AddScoped<RoutineService>();
-    builder.Services.AddScoped<UserService>();
     
-    
+
+    builder.Services.AddStripeInfrastructure(builder.Configuration);
     builder.Services.AddScoped<DataSeeder>();
+    builder.Services.AddScoped<JwtService>();
     
     
     builder.Services
@@ -81,7 +81,7 @@ namespace StayFit
         })
         .AddEntityFrameworkStores<Context>();
 
-    builder.Services.AddScoped<JwtService>();
+    
     
     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
@@ -101,10 +101,8 @@ namespace StayFit
         });
     
     // Configure the HTTP request pipeline.
-    
-    
-    
     var app = builder.Build();
+    
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;
     var initialiser = services.GetRequiredService<DataSeeder>();
