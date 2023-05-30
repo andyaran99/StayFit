@@ -1,4 +1,6 @@
-﻿using System.Threading.Channels;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Threading.Channels;
 using Azure.Identity;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using StayFit.StayFit_Data.Model.UserDTO;
@@ -78,8 +80,23 @@ namespace StayFit.StayFit_Data.Controllers
             return Ok(token);
         }
 
-        
+        /*[HttpPost("saveUserByStripeCustomerKey")]
+        public async Task<ActionResult> SaveUserByStripeCustomerKey( UserPaymentAddResponce userPaymentAdd )
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            IdentityUser user = await _userManager.FindByIdAsync(userId);
+            user.StripeAccountId = userPaymentAdd.StripeCustomerId;
+            return Ok();
 
+        }*/
+
+
+
+        //to do:
+        //make a new post route that accepts the responce of stripe 
+        //are already login find a way to decode the token to get the username 
+        //then to that username add the stripe customer_id
+        //proceed to make a payment
        
     }
 }

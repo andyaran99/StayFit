@@ -8,7 +8,7 @@ using StayFit.StayFit_Data.Repositories;
 using StayFit.StayFit_Data.Model.Stripe;
 
 namespace StayFit.StayFit_Data.Controllers
-{   [Authorize]
+{   
     [Route("api/[controller]")]
     public class StripeController : Controller
     {
