@@ -12,6 +12,7 @@ function Register() {
     const [password, setPassword] = useState("");
     const [email,setEmail]=useState("");
     const navigate=useNavigate();
+    
 
     // Function to collect data
     
@@ -26,9 +27,16 @@ function Register() {
             const response = await axios.post(`https://localhost:44368/api/Users`,
                 {username, password, email}
             ).then(r=>r.data);
-
             if (response != null) {
-                navigate('/NewsMessages');
+                alert("User was succesfuly created");
+                const login=await axios.post(
+                    "https://localhost:44368/api/Users/BearerToken",
+                    {username,password})
+                    .then(r=>r.data);
+                setJwtToken(login);
+                setButtonLogOut();
+                alert("Connected Succefuly!")
+                navigate('/Payment');
             }
         }
         catch (error) {

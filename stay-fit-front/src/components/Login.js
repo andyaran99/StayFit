@@ -26,7 +26,8 @@ function Login() {
             if (response != null) {
                 setJwtToken(response);
                 setButtonLogOut();
-                navigate('/Payment');
+                alert("Connected Succefuly!")
+                navigate('/');
             }
         }
         catch (error) {

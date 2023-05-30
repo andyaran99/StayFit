@@ -14,6 +14,11 @@ function Payment() {
     const [expirationMonth,setExpirationMonth]=useState("");
     const [cvc,setCvc]=useState("");
     const creditCard={name,cardNumber,expirationYear,expirationMonth,cvc}
+    const [responceName,setResponceName]=useState("");
+    const[responceEmail,setResponceEmail]=useState("");
+    const[responceCustomerId,setResponceCustomerId]=useState("");
+    
+    
     const navigate=useNavigate();
     
 
@@ -27,14 +32,18 @@ function Payment() {
             const response = await axios.post(`https://localhost:44368/api/Stripe/customer/add`,
                 {name, email,creditCard}
             ).then(r=>r.data);
-
+            console.log(response);
             if (response != null) {
+                alert("Payment was succesfuly added");
+               /* setResponceName(response.data.name);
+                setResponceEmail(response.data.email);
+                setResponceCustomerId(response.data.customerId)
+                const saveUserByStripeCustomerKey=await axios.post("https://localhost:44368/api/Users/saveUserByStripeCustomerKey",{responceName,responceEmail,responceCustomerId})*/
                 navigate('/');
-                alert("was succesful")
             }
         }
         catch (error) {
-            console.log("Token failled");
+            alert("it failled");
             navigate('/');
         }
     }
@@ -69,7 +78,7 @@ function Payment() {
                         <Form.Control type="text" id="CVC" name="CVC" onInput={e => setCvc(e.target.value)} required />
                     </Form.Group>
                     
-                    <Button variant="primary" type="submit" >Login</Button>
+                    <Button variant="primary" type="submit" >Add pay</Button>
                 </Form>
             </Card.Body>
         </Card>
