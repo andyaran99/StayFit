@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import "./NewsMessage.css";
+import "./css/NewsMessage.css";
 import axios from "axios";
 
 function NewsMessages() {

@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import "./Product.css"
+import "./css/Product.css";
 import {getJwtToken} from "./lib/auth"
 import axios from "axios";
 import {Link} from "react-router-dom";

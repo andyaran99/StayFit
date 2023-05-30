@@ -1,6 +1,6 @@
 ﻿import { Outlet, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-import './Layout.css';
+import './css/Layout.css';
 
 
 
