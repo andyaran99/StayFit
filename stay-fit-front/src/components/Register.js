@@ -40,7 +40,7 @@ function Register() {
             }
         }
         catch (error) {
-            console.log("Register failled");
+           alert("Register failled!");
             navigate('/');
         }
     }

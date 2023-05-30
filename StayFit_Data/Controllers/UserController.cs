@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Channels;
 using Azure.Identity;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+using Microsoft.AspNetCore.Http.HttpResults;
 using StayFit.StayFit_Data.Model.UserDTO;
 using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Services;
@@ -80,15 +81,13 @@ namespace StayFit.StayFit_Data.Controllers
             return Ok(token);
         }
 
-        /*[HttpPost("saveUserByStripeCustomerKey")]
-        public async Task<ActionResult> SaveUserByStripeCustomerKey( UserPaymentAddResponce userPaymentAdd )
+        [HttpPost("SaveUserByStripeCustomerKey")]
+        public async Task<ActionResult> SaveUserByStripeCustomerKey( [FromBody] UserPaymentAddResponce Id )
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            IdentityUser user = await _userManager.FindByIdAsync(userId);
-            user.StripeAccountId = userPaymentAdd.StripeCustomerId;
-            return Ok();
 
-        }*/
+            return Ok(Id);
+
+        }
 
 
 

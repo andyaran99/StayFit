@@ -1,6 +1,6 @@
 ﻿import React, {useEffect, useState} from "react";
 import { Button, Form, Card } from "react-bootstrap";
-import { setJwtToken, setRefreshToken,setButtonLogOut ,getJwtToken} from "./lib/auth"
+import { setJwtToken,setButtonLogOut } from "./lib/auth"
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import ReactDOM from "react-dom";
@@ -19,6 +19,7 @@ function Login() {
     
     const tokenData = async () => {
         try{
+            
             const response = await axios.post(`https://localhost:44368/api/Users/BearerToken`,
                 {username, password}
             ).then(r=>r.data);

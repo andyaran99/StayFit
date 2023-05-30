@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { Button, Form, Card } from "react-bootstrap";
-import { setJwtToken, setRefreshToken,setButtonLogOut ,getJwtToken} from "./lib/auth"
+import { sendDataToSaveStripeCustomerIdInMyDataBase } from "./lib/auth"
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import ReactDOM from "react-dom";
@@ -14,9 +14,7 @@ function Payment() {
     const [expirationMonth,setExpirationMonth]=useState("");
     const [cvc,setCvc]=useState("");
     const creditCard={name,cardNumber,expirationYear,expirationMonth,cvc}
-    const [responceName,setResponceName]=useState("");
-    const[responceEmail,setResponceEmail]=useState("");
-    const[responceCustomerId,setResponceCustomerId]=useState("");
+    
     
     
     const navigate=useNavigate();
@@ -29,21 +27,25 @@ function Payment() {
 
     const tokenData = async () => {
         try{
+            debugger
             const response = await axios.post(`https://localhost:44368/api/Stripe/customer/add`,
                 {name, email,creditCard}
             ).then(r=>r.data);
             console.log(response);
-            if (response != null) {
+            
+
+            if (response!= null) {
                 alert("Payment was succesfuly added");
-               /* setResponceName(response.data.name);
-                setResponceEmail(response.data.email);
-                setResponceCustomerId(response.data.customerId)
-                const saveUserByStripeCustomerKey=await axios.post("https://localhost:44368/api/Users/saveUserByStripeCustomerKey",{responceName,responceEmail,responceCustomerId})*/
+                const saveUserByStripeCustomerKey=await axios.post(
+                    "https://localhost:44368/api/Users/saveUserByStripeCustomerKey",
+                    {response})
+                    .then(s=>s.data);
+                console.log(saveUserByStripeCustomerKey);
                 navigate('/');
             }
         }
         catch (error) {
-            alert("it failled");
+            alert("Adding Payment  failled");
             navigate('/');
         }
     }
