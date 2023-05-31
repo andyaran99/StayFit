@@ -69,8 +69,9 @@ namespace StayFit
     builder.Services.AddScoped<JwtService>();
     
     
+    
     builder.Services
-        .AddIdentityCore<IdentityUser>(options => {
+        .AddIdentityCore<User>(options => {
             options.SignIn.RequireConfirmedAccount = false;
             options.User.RequireUniqueEmail = true;
             options.Password.RequireDigit = false;

@@ -2,8 +2,6 @@
 
 public class UserPaymentAddResponce
 {
-    public string Id { get; set; }
-
-    
-    
+    public string customerId { get; set; }
+    public string jwtToken { get; set; }
 }

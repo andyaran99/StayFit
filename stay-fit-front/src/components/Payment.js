@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { Button, Form, Card } from "react-bootstrap";
-import { sendDataToSaveStripeCustomerIdInMyDataBase } from "./lib/auth"
+import { getJwtToken } from "./lib/auth"
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import ReactDOM from "react-dom";
@@ -14,6 +14,7 @@ function Payment() {
     const [expirationMonth,setExpirationMonth]=useState("");
     const [cvc,setCvc]=useState("");
     const creditCard={name,cardNumber,expirationYear,expirationMonth,cvc}
+    
     
     
     
@@ -32,13 +33,18 @@ function Payment() {
                 {name, email,creditCard}
             ).then(r=>r.data);
             console.log(response);
-            
+            console.log(response.customerId);
+            console.log('set customer id');
+            const customerId=response.customerId;
+            console.log(customerId);
 
             if (response!= null) {
                 alert("Payment was succesfuly added");
+                const jwt=getJwtToken();
+                console.log(jwt);
                 const saveUserByStripeCustomerKey=await axios.post(
                     "https://localhost:44368/api/Users/saveUserByStripeCustomerKey",
-                    {response})
+                    {"customerId":customerId,"jwtToken":getJwtToken()})
                     .then(s=>s.data);
                 console.log(saveUserByStripeCustomerKey);
                 navigate('/');

@@ -18,6 +18,9 @@ public class Context:IdentityUserContext<IdentityUser>
     public DbSet<Product> Products { get; set; }
     public DbSet<Routine> Routines { get; set; }
     
+    public DbSet<User> Users { get; set; }
+    
+    
     
     
     
@@ -37,10 +40,10 @@ public class Context:IdentityUserContext<IdentityUser>
 
 
 
-        modelBuilder.Entity<Exercice>().ToTable("Exercice");
-        modelBuilder.Entity<NewsMessage>().ToTable("NewsMessage");
-        modelBuilder.Entity<Product>().ToTable("Product");
-        modelBuilder.Entity<Routine>().ToTable("Routine");
+        modelBuilder.Entity<Exercice>().ToTable("Exercices");
+        modelBuilder.Entity<NewsMessage>().ToTable("NewsMessages");
+        modelBuilder.Entity<Product>().ToTable("Products");
+        modelBuilder.Entity<Routine>().ToTable("Routines");
         
 
     }

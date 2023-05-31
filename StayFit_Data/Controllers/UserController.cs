@@ -1,9 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
-using System.Threading.Channels;
-using Azure.Identity;
-using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
-using Microsoft.AspNetCore.Http.HttpResults;
+using System.Text;
 using StayFit.StayFit_Data.Model.UserDTO;
 using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Services;
@@ -21,16 +19,17 @@ namespace StayFit.StayFit_Data.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
-       
+        private readonly UserManager<User> _userManager;
         private readonly JwtService _jwtService;
+        
 
         public UsersController(
-            UserManager<IdentityUser> userManager,
-          JwtService jwtService
+            UserManager<User> userManager,
+            JwtService jwtService
         ) {
             _userManager = userManager;
             _jwtService = jwtService;
+            
         }
         
 
@@ -43,7 +42,7 @@ namespace StayFit.StayFit_Data.Controllers
             }
 
             var result = await _userManager.CreateAsync(
-                new IdentityUser() { UserName = newUser.Username, Email = newUser.Email },
+                new User() { UserName = newUser.Username, Email = newUser.Email },
                 newUser.Password
             );
 
@@ -82,14 +81,55 @@ namespace StayFit.StayFit_Data.Controllers
         }
 
         [HttpPost("SaveUserByStripeCustomerKey")]
-        public async Task<ActionResult> SaveUserByStripeCustomerKey( [FromBody] UserPaymentAddResponce Id )
+        public async Task<ActionResult> SaveUserByStripeCustomerKey( [FromBody] UserPaymentAddResponce customerStripe )
         {
+            var tokenHandler = new JwtSecurityTokenHandler();
 
-            return Ok(Id);
+            // Replace 'YOUR_SECRET_KEY' with the secret key used to sign the token
+            var secretKey = "this is the secret key for the jwt, it must be kept secure";
 
+            try
+            {
+                // Read and validate the JWT token
+                var tokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+
+                // Extract the claims from the JWT token
+                var claimsPrincipal = tokenHandler.ValidateToken(customerStripe.jwtToken, tokenValidationParameters, out var validatedToken);
+
+                // Find the user ID claim
+                var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.Name);
+
+                if (userIdClaim != null)
+                {
+                    var userName = userIdClaim.Value;
+                    var user = await _userManager.FindByNameAsync(userName);
+                    user.StripeAccountId = customerStripe.customerId;
+                    await _userManager.UpdateAsync(user);
+                    return Ok(user.StripeAccountId);
+                }
+                else
+                {
+                    throw new Exception("User ID claim not found in JWT token.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Failed to decode JWT token: " + ex.Message);
+                return null;
+            }
+            
+            
+            
+            
         }
 
-
+      
 
         //to do:
         //make a new post route that accepts the responce of stripe 
