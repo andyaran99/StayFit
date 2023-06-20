@@ -3,13 +3,15 @@ import ReactDOM from "react-dom";
 import "./css/Product.css";
 import {getJwtToken} from "./lib/auth"
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+
 
 
 
 
 function Products() {
     const [products, setProduct] = useState([]);
+    const navigate=useNavigate();
     
     
 
@@ -25,6 +27,13 @@ function Products() {
         
         const prod=(await responce).data;
         setProduct(prod);
+    }
+    const handlePayment =async () =>{
+        console.log(getJwtToken())
+        if(getJwtToken()!=null){
+            const responcePayment=axios.post("https://localhost:44368/api/Users/checkPayment",{"jwt":getJwtToken()});
+        }
+        navigate('/');
     }
     
     
@@ -48,8 +57,7 @@ function Products() {
                             <h3 className="card-text text-center"><strong>Price: {product.price} Eur</strong></h3>
                         </div>
                         <div className="card-footer">
-                            {/*<Link className="btn btn-primary btn-checkout" to="/Payment">BuyNow</Link>*/}
-                            <a type="button" className="btn btn-primary btn-checkout" id="btn-checkout" >Buy Now</a>
+                            <a type="button" className="btn btn-primary btn-checkout" id="btn-checkout" onClick={handlePayment} >Buy Now</a>
                         </div>
                         
                     </div>

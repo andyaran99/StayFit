@@ -28,12 +28,7 @@ public class RoutineController:ControllerBase
         return message;
     }
     
-    /*[HttpGet("{id}/exercices", Name = "GetAllRoutineExercices")]
-    public async Task<ActionResult<List<ExerciceViewDto>>>GetALLRoutineExercice( int routineId)
-    {
-        var message = await _routineService.GetAllRoutineExercice(routineId);
-        return message;
-    }*/
+    
     
 
     [HttpGet("{id}", Name = "GetRoutineById")]

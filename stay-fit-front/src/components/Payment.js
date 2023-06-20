@@ -24,6 +24,12 @@ function Payment() {
     const handleSubmit=(e)=>{e.preventDefault()
         tokenData();
     }
+    
+    const handleCancel = async() =>{ 
+        
+        alert("Addying payment was canceled ")
+        navigate('/');
+    }
 
 
     const tokenData = async () => {
@@ -32,16 +38,11 @@ function Payment() {
             const response = await axios.post(`https://localhost:44368/api/Stripe/customer/add`,
                 {name, email,creditCard}
             ).then(r=>r.data);
-            console.log(response);
-            console.log(response.customerId);
-            console.log('set customer id');
             const customerId=response.customerId;
-            console.log(customerId);
+            
 
             if (response!= null) {
                 alert("Payment was succesfuly added");
-                const jwt=getJwtToken();
-                console.log(jwt);
                 const saveUserByStripeCustomerKey=await axios.post(
                     "https://localhost:44368/api/Users/saveUserByStripeCustomerKey",
                     {"customerId":customerId,"jwtToken":getJwtToken()})
@@ -87,6 +88,7 @@ function Payment() {
                     </Form.Group>
                     
                     <Button variant="primary" type="submit" >Add pay</Button>
+                    <Button variant="primary" onClick={handleCancel}>Cancel</Button>
                 </Form>
             </Card.Body>
         </Card>

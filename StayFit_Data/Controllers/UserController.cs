@@ -123,19 +123,59 @@ namespace StayFit.StayFit_Data.Controllers
                 Console.WriteLine("Failed to decode JWT token: " + ex.Message);
                 return null;
             }
-            
-            
-            
-            
         }
+        
+        
+        [HttpPost("CheckPayment")]
+        public async Task<ActionResult> CheckPayment( [FromBody] UserPaymentCheck jwt )
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
 
-      
+            // Replace 'YOUR_SECRET_KEY' with the secret key used to sign the token
+            var secretKey = "this is the secret key for the jwt, it must be kept secure";
 
-        //to do:
-        //make a new post route that accepts the responce of stripe 
-        //are already login find a way to decode the token to get the username 
-        //then to that username add the stripe customer_id
-        //proceed to make a payment
-       
+            try
+            {
+                // Read and validate the JWT token
+                var tokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+
+                // Extract the claims from the JWT token
+                var claimsPrincipal = tokenHandler.ValidateToken(jwt.jwtToken, tokenValidationParameters, out var validatedToken);
+
+                // Find the user ID claim
+                var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.Name);
+
+                if (userIdClaim != null)
+                {
+                    var userName = userIdClaim.Value;
+                    var user = await _userManager.FindByNameAsync(userName);
+                    if (user.StripeAccountId != null)
+                    {
+                        return Ok(user.StripeAccountId);
+                    }
+                    else
+                    {
+                        return new UnauthorizedResult();
+                    }
+                    
+                }
+                else
+                {
+                    throw new Exception("User ID claim not found in JWT token.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Failed to decode JWT token: " + ex.Message);
+                return null;
+            }
+        }
+        
     }
 }
