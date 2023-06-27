@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 using StayFit.StayFit_Data.Model.UserDTO;
 using StayFit.StayFit_Data.Entity;
 using StayFit.StayFit_Data.Services;
@@ -79,6 +80,8 @@ namespace StayFit.StayFit_Data.Controllers
             var token = _jwtService.CreateToken(user);
             return Ok(token);
         }
+        
+        
 
         [HttpPost("SaveUserByStripeCustomerKey")]
         public async Task<ActionResult> SaveUserByStripeCustomerKey( [FromBody] UserPaymentAddResponce customerStripe )
@@ -126,8 +129,10 @@ namespace StayFit.StayFit_Data.Controllers
         }
         
         
+        
+        [Authorize]
         [HttpPost("CheckPayment")]
-        public async Task<ActionResult> CheckPayment( [FromBody] UserPaymentCheck jwt )
+        public async Task<ActionResult> CheckPayment( [FromBody] UserPaymentCheckRequest jwt )
         {
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -157,11 +162,14 @@ namespace StayFit.StayFit_Data.Controllers
                     var user = await _userManager.FindByNameAsync(userName);
                     if (user.StripeAccountId != null)
                     {
-                        return Ok(user.StripeAccountId);
+                        UserPaymentCheckResponse response = new UserPaymentCheckResponse();
+                        response.stripeId = user.StripeAccountId;
+                        response.clientEmail = user.Email;
+                        return Ok(response);
                     }
                     else
                     {
-                        return new UnauthorizedResult();
+                       return BadRequest();
                     }
                     
                 }

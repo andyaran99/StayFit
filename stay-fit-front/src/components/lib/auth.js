@@ -1,12 +1,4 @@
-﻿import crypto from "crypto";
-import stream from "stream";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
-import axios from "axios";
-
-
-
-
+﻿
 
 export function getJwtToken() {
     return localStorage.getItem("jwt")
@@ -37,7 +29,7 @@ export function setButtonLogOut(){
 }
 
 export function logoutFunction(){
-    setJwtToken("jwt",null);
+    setJwtToken("jwt","");
     var element= document.getElementById("login");
     element.innerHTML="Login";
     element.removeEventListener("click",logoutFunction);

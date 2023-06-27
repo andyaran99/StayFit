@@ -7,7 +7,7 @@ import './css/Layout.css';
 const Layout = () => {
     return (
         <div>
-            <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-md  navbar-dark bg-dark">
                 <button className="navbar-toggler " type="button" data-toggle="collapse"
                         data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@ const Layout = () => {
                             <Link class="nav-link" to="Register">Register</Link>
                         </li>
                         <li className="nav-item">
-                            <Link class="nav-link" to="Payment">Add Payment</Link>
+                            <Link class="nav-link" to="Payments">Payments</Link>
                         </li>
                         
                     </ul>

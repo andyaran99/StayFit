@@ -6,7 +6,7 @@ import axios from "axios";
 import ReactDOM from "react-dom";
 
 
-function Payment() {
+function Payments() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [cardNumber, setCardNumber]=useState("");
@@ -95,4 +95,4 @@ function Payment() {
     );
 }
 
-export default Payment;
+export default Payments;

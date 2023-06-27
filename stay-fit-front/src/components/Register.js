@@ -1,6 +1,6 @@
 ﻿import React, {useEffect, useState} from "react";
 import { Button, Form, Card } from "react-bootstrap";
-import { setJwtToken, setRefreshToken,setButtonLogOut ,getJwtToken} from "./lib/auth"
+import { setJwtToken,setButtonLogOut ,getJwtToken} from "./lib/auth"
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import ReactDOM from "react-dom";
@@ -36,7 +36,7 @@ function Register() {
                 setJwtToken(login);
                 setButtonLogOut();
                 alert("Connected Succefuly!")
-                navigate('/Payment');
+                navigate('/Payments');
             }
         }
         catch (error) {
