@@ -6,9 +6,9 @@ developed in C#, uses Microsoft SQL Server and Entity, Identity and JWT, Stripe 
 Javascript, Html and Css are used for the front end of the application
 
 ## What i learned?
-Work on a project from the begining.
-Grow your project iteratively.
-Deliver increments in each sprint.
+1. Work on a project from the begining.
+2. Grow your project iteratively.
+3. Deliver increments in each sprint.
 
 ## Creation process
 1. I started with implementing the basic routes that the project neded. 
